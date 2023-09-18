@@ -7,6 +7,7 @@
 //
 using UnityEngine;
 using System.Collections;
+using Unity.VisualScripting;
 
 namespace UnityChan
 {
@@ -15,9 +16,11 @@ namespace UnityChan
 	{
 
 		private Animator anim;
-		public Transform targetObj = null;
-		public bool isIkActive = false;
-		public float mixWeight = 1.0f;
+		public bool isAttacking = false;
+		[SerializeField] private Transform targetObj = null;
+		[SerializeField] private Transform targetObjRotation = null;
+		[SerializeField] private  bool isIkActive = false;
+		[SerializeField] private  float mixWeight = 1.0f;
 
 		void Awake ()
 		{
@@ -39,10 +42,21 @@ namespace UnityChan
 				anim.SetIKPositionWeight (AvatarIKGoal.RightHand, mixWeight);
 				anim.SetIKRotationWeight (AvatarIKGoal.RightHand, mixWeight);
 				anim.SetIKPosition (AvatarIKGoal.RightHand, targetObj.position);
-				anim.SetIKRotation (AvatarIKGoal.RightHand, targetObj.rotation);
+
+				if (Input.GetButton("Fire1"))
+				{
+					//角度を変えたオブジェクトと角度を合わせることで剣を振る
+					anim.SetIKRotation (AvatarIKGoal.RightHand, targetObjRotation.rotation);
+					isAttacking = true;
+				}
+				else
+				{
+					anim.SetIKRotation (AvatarIKGoal.RightHand, targetObj.rotation);
+					isAttacking = false;
+				}
 			}
 		}
-
+		
 		// void OnGUI ()
 		// {
 		// 	Rect rect1 = new Rect (10, Screen.height - 20, 400, 30);
