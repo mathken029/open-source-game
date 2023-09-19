@@ -18,7 +18,12 @@ public class DisplayController : MonoBehaviour
     private void Start()
     {
         explanationText.text = "操作説明\n" +
-                               "マウス移動：武器を動かす";
+                               "・マウス移動：武器を動かす\n" +
+                               "・左クリック：攻撃\n" +
+                               "\n" +
+                               "・スイカを攻撃で加点\n" +
+                               "・爆弾を攻撃してしまうと減点\n" +
+                               "・鉄球を防げないと減点（攻撃は不要）\n";
     }
 
     public void AddPoint(int amount)
@@ -30,17 +35,5 @@ public class DisplayController : MonoBehaviour
     {
         pointText.text = "得点：" + point + "点";
         
-    }
-
-    void OnGUI ()
-    {
-        GUI.Box (new Rect (Screen.width - 260, 10, 100, 30), "得点：" + point + "点");
-
-        GUI.Box (new Rect (Screen.width - 260, 40, 250, 150), "操作説明");
-        GUI.Label (new Rect (Screen.width - 245, 60, 250, 30), "マウス移動：武器を動かす");
-        GUI.Label (new Rect (Screen.width - 245, 80, 250, 30), "マウス右クリック：武器を振る");
-        GUI.Label (new Rect (Screen.width - 245, 100, 250, 30), "");
-        GUI.Label (new Rect (Screen.width - 245, 120, 250, 30), "・武器を動かして鉄球を防御する");
-        GUI.Label (new Rect (Screen.width - 245, 150, 250, 30), "・武器を振ってスイカを斬る");
     }
 }
