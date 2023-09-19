@@ -31,6 +31,7 @@ namespace UnityChan
 		public float rotateSpeed = 2.0f;
 		// ジャンプ威力
 		public float jumpPower = 3.0f; 
+		
 		// キャラクターコントローラ（カプセルコライダ）の参照
 		private CapsuleCollider col;
 		private Rigidbody rb;
@@ -175,18 +176,7 @@ namespace UnityChan
 		// 		}
 		// 	}
 		}
-
-		void OnGUI ()
-		{
-			// GUI.Box (new Rect (Screen.width - 260, 10, 250, 120), "操作説明");
-			// GUI.Label (new Rect (Screen.width - 245, 30, 250, 30), "マウス移動：武器を動かす");
-			// GUI.Label (new Rect (Screen.width - 245, 50, 250, 30), "マウス右クリック：武器を振る");
-			// GUI.Label (new Rect (Screen.width - 245, 70, 250, 30), "");
-			// GUI.Label (new Rect (Screen.width - 245, 90, 250, 30), "・武器を動かして鉄球を防御する");
-			// GUI.Label (new Rect (Screen.width - 245, 110, 250, 30), "・武器を振ってスイカを斬る");
-		}
-
-
+		
 		// キャラクターのコライダーサイズのリセット関数
 		void resetCollider ()
 		{

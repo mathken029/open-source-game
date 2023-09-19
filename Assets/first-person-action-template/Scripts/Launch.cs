@@ -15,6 +15,12 @@ public class Launch : MonoBehaviour
 
     //音を再生するためのコンポーネントの情報を格納する変数です
     [SerializeField] private AudioSource audioSource;
+    
+    //ポイントの加算に使用します
+    [SerializeField] private GameObject displayController;
+    
+    //各オブジェクトのポイントを定義します
+    [SerializeField] private int watermelonPoints;
 
 
     private bool isLaunching = false;
@@ -46,10 +52,8 @@ public class Launch : MonoBehaviour
     public void CollisionWatermelon()
     {
         //ポイントの加算処理を書く
-        
+        displayController.GetComponent<DisplayController>().AddPoint(watermelonPoints);
     
-        
         audioSource.PlayOneShot(seCollisionWatermelon);
-    
     }
 }
