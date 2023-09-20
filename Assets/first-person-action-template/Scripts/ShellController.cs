@@ -7,18 +7,27 @@ namespace UnityChan
 {
 public class ShellController : MonoBehaviour
 {
+    //プレイヤーに砲弾がヒットしたときの処理です
     private void OnCollisionEnter(Collision collision)
     {
         if (collision.gameObject.GetComponent<UnityChanControlScriptWithRgidBody>())
         {
-            Destroy(this.gameObject);
+            if (this.transform.GetComponentInParent<Launch>().ShellHit(this.gameObject.name))
+            {
+                //パーティクルを再生する
+                StartCoroutine("HitCoroutine");
+            }
+            else
+            {
+                Destroy(this.gameObject);
+            }
         }
 
     }
 
+    //プレイヤーの武器に砲弾がヒットしたときの処理です
     private void OnTriggerEnter(Collider other)
     {
-        // 武器に当たったときの処理です
         if (other.gameObject.GetComponent<WeaponController>()
                  .TryGetComponent<WeaponController>(out WeaponController _weaponController))
         {
@@ -55,9 +64,31 @@ public class ShellController : MonoBehaviour
         
         //2回当たることがあるので当たり判定を無くします
         this.gameObject.GetComponent<Collider>().enabled = false;
-        
+
         this.gameObject.GetComponent<ParticleSystem>().Play();
         
+        //パーティクルが終わるのを待ってから消滅します
+        yield return new WaitForSeconds(0.2f);
+        
+        Destroy(this.gameObject);
+    }
+    
+    //ヒットしてすぐ消えるので、パーティクルを再生しません
+    IEnumerator HitCoroutine()
+    {
+        //パーティクルの位置がずれないように停止します
+        this.gameObject.GetComponent<Rigidbody>().isKinematic = true;
+        
+        //配下の全てのメッシュを無効化して見えなくする
+        MeshRenderer[] mrChild = this.gameObject.GetComponentsInChildren<MeshRenderer>();
+        foreach ( MeshRenderer mr  in mrChild ) {
+            mr.enabled = false;
+        }        
+        
+        //2回当たることがあるので当たり判定を無くします
+        this.gameObject.GetComponent<Collider>().enabled = false;
+
+        //パーティクルが終わるのを待ってから消滅します
         yield return new WaitForSeconds(0.2f);
         
         Destroy(this.gameObject);

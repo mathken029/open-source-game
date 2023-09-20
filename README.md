@@ -7,6 +7,7 @@
 - "Neon Blade - Sword" (https://skfb.ly/6yr8G) by Wawann is licensed under Creative Commons Attribution (http://creativecommons.org/licenses/by/4.0/).
 - "Watermelon" (https://skfb.ly/oxzZp) by Lassi Kaukonen is licensed under Creative Commons Attribution (http://creativecommons.org/licenses/by/4.0/).
 - "Just a Simple Bomb" (https://skfb.ly/oxDLx) by Incg5764 is licensed under Creative Commons Attribution (http://creativecommons.org/licenses/by/4.0/).
+- "Spiked Ball" (https://skfb.ly/6zqV6) by azzajess is licensed under Creative Commons Attribution (http://creativecommons.org/licenses/by/4.0/).
 
 ### Characters
 
@@ -23,3 +24,4 @@
 - "Explosion01" (https://otologic.jp/free/se/explosion01.html) is licensed under CC BY 4.0 (https://otologic.jp/free/license.html)
 - "Cut01" (https://otologic.jp/free/se/cut01.html) is licensed under CC BY 4.0 (https://otologic.jp/free/license.html)
 - "Onoma-Impact08" (https://otologic.jp/free/se/impact01.html) is licensed under CC BY 4.0 (https://otologic.jp/free/license.html)
+- "Hit06" (https://otologic.jp/free/se/hit01.html) is licensed under CC BY 4.0 (https://otologic.jp/free/license.html)
