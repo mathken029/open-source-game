@@ -36,7 +36,7 @@ public class WatermelonController : MonoBehaviour
         //メッシュを無効化して見えなくする
         this.gameObject.GetComponentInChildren<MeshRenderer>().enabled = false;
         
-        //2回当たることがあるので当たり判定を無くす
+        //2回当たることがあるので当たり判定を無くします
         this.gameObject.GetComponent<Collider>().enabled = false;
         
         this.gameObject.GetComponent<ParticleSystem>().Play();

@@ -6,6 +6,7 @@
 
 - "Neon Blade - Sword" (https://skfb.ly/6yr8G) by Wawann is licensed under Creative Commons Attribution (http://creativecommons.org/licenses/by/4.0/).
 - "Watermelon" (https://skfb.ly/oxzZp) by Lassi Kaukonen is licensed under Creative Commons Attribution (http://creativecommons.org/licenses/by/4.0/).
+- "Just a Simple Bomb" (https://skfb.ly/oxDLx) by Incg5764 is licensed under Creative Commons Attribution (http://creativecommons.org/licenses/by/4.0/).
 
 ### Characters
 
