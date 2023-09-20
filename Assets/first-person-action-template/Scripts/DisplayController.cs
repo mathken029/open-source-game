@@ -22,17 +22,6 @@ public class DisplayController : MonoBehaviour
     //表示するポイント
     private int displayPoints = 0;
     
-    private void Start()
-    {
-        explanationText.text = "操作説明\n" +
-                               "・マウス移動：武器を動かす\n" +
-                               "・左クリック：攻撃\n" +
-                               "\n" +
-                               "・スイカを攻撃で加点\n" +
-                               "・爆弾を攻撃してしまうと減点\n" +
-                               "・鉄球を防げないと減点（攻撃は不要）\n";
-    }
-
     public void AddPoints(int points)
     {
         displayPoints += points;
