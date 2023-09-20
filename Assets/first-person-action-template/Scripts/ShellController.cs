@@ -3,18 +3,23 @@ using System.Collections;
 using System.Collections.Generic;
 using UnityEngine;
 
+namespace UnityChan
+{
 public class ShellController : MonoBehaviour
 {
-    
+    private void OnCollisionEnter(Collision collision)
+    {
+        if (collision.gameObject.GetComponent<UnityChanControlScriptWithRgidBody>())
+        {
+            Destroy(this.gameObject);
+        }
+
+    }
+
     private void OnTriggerEnter(Collider other)
     {
-        // if not collision to weapon, end method
-        if (other.gameObject.GetComponent<WeaponController>() == null)
-        {
-            return;
-        }
-        // if collision to weapon, burst
-        else if (other.gameObject.GetComponent<WeaponController>()
+        // 武器に当たったときの処理です
+        if (other.gameObject.GetComponent<WeaponController>()
                  .TryGetComponent<WeaponController>(out WeaponController _weaponController))
         {
             if (_weaponController.IsAttacking())
@@ -58,3 +63,5 @@ public class ShellController : MonoBehaviour
         Destroy(this.gameObject);
     }
 }
+}
+
