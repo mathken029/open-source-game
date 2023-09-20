@@ -80,22 +80,43 @@ public class Launch : MonoBehaviour
         isLaunching = false;
     }
 
-    public void CollisionShell(string objectName)
+    public bool ShellAttacked(string objectName)
     {
+        bool attackFlag = false;
+        
         switch (objectName)
         {
             case OBJECTNAME_WATERMELON:
                 //ポイントを加算して効果音を鳴らします
                 displayController.GetComponent<DisplayController>().AddPoints(watermelonPoints);
                 audioSource.PlayOneShot(seCollisionWatermelon);
+                attackFlag = true;
                 break;
-            
             case OBJECTNAME_BOMB:
                 //ポイントを減算して効果音を鳴らします
                 displayController.GetComponent<DisplayController>().SubtractionPoints(bombSubtractionPoints);
                 audioSource.PlayOneShot(seBombAttacked);
+                attackFlag = true;
                 break;
         }
-
+        
+        return attackFlag;
+    }
+    
+    public bool ShellGuarded(string objectName)
+    {
+        bool guardFlag = false;
+        
+        switch (objectName)
+        {
+            case OBJECTNAME_BOMB:
+                //ポイントを減算して効果音を鳴らします
+                displayController.GetComponent<DisplayController>().SubtractionPoints(bombSubtractionPoints);
+                audioSource.PlayOneShot(seBombAttacked);
+                guardFlag = true;
+                break;
+        }
+        
+        return guardFlag;
     }
 }

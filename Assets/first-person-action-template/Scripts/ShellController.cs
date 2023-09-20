@@ -19,10 +19,19 @@ public class ShellController : MonoBehaviour
         {
             if (_weaponController.IsAttacking())
             {
-                this.transform.GetComponentInParent<Launch>().CollisionShell(this.gameObject.name);
-            
-                //パーティクルを再生する
-                StartCoroutine("CollisionCoroutine");
+                if (this.transform.GetComponentInParent<Launch>().ShellAttacked(this.gameObject.name))
+                {
+                    //パーティクルを再生する
+                    StartCoroutine("CollisionCoroutine");
+                }
+            }
+            else
+            {
+                if (this.transform.GetComponentInParent<Launch>().ShellGuarded(this.gameObject.name))
+                {
+                    //パーティクルを再生する
+                    StartCoroutine("CollisionCoroutine");
+                }
             }
         }
 
