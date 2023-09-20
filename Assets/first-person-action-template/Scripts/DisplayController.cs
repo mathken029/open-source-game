@@ -13,7 +13,7 @@ public class DisplayController : MonoBehaviour
     [SerializeField] private TextMeshProUGUI explanationText;
 
     // ゲームのポイント（別クラスに分離する）
-    private int point = 0;
+    private int displayPoints = 0;
 
     private void Start()
     {
@@ -26,14 +26,20 @@ public class DisplayController : MonoBehaviour
                                "・鉄球を防げないと減点（攻撃は不要）\n";
     }
 
-    public void AddPoint(int amount)
+    public void AddPoints(int points)
     {
-        point += amount;
+        displayPoints += points;
     }
+    
+    public void SubtractionPoints(int points)
+    {
+        displayPoints -= points;
+    }
+
 
     private void Update()
     {
-        pointText.text = "得点：" + point + "点";
+        pointText.text = "得点：" + displayPoints + "点";
         
     }
 }

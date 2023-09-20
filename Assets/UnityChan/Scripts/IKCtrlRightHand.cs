@@ -88,8 +88,9 @@ namespace UnityChan
 			if (isIkActive) {
 				anim.SetIKPositionWeight (AvatarIKGoal.RightHand, mixWeight);
 				anim.SetIKRotationWeight (AvatarIKGoal.RightHand, mixWeight);
+				anim.SetIKPosition (AvatarIKGoal.RightHand, targetObj.position);
 		
-				if (Input.GetButton("Fire1"))
+				if (Input.GetButtonDown("Fire1"))
 				{
 					if (weapon.GetComponent<WeaponController>().IsAttacking())
 					{
@@ -102,7 +103,6 @@ namespace UnityChan
 				}
 				else
 				{
-					anim.SetIKPosition (AvatarIKGoal.RightHand, targetObj.position);
 					anim.SetIKRotation (AvatarIKGoal.RightHand, targetObj.rotation);
 				}
 			}
@@ -116,8 +116,7 @@ namespace UnityChan
 			yield return new WaitForSeconds(attackWaitTime);
 		
 			//角度を変えたオブジェクトと角度を合わせることで剣を振る
-			// anim.SetIKRotation (AvatarIKGoal.RightHand, targetObjRotation.rotation);
-			anim.SetTrigger("swingTrigger");
+			anim.SetIKRotation (AvatarIKGoal.RightHand, targetObjRotation.rotation);
 			
 			weapon.GetComponentInChildren<TrailRenderer>().enabled = false;
 			weapon.GetComponent<WeaponController>().AttackEnd();

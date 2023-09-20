@@ -3,9 +3,9 @@ using System.Collections;
 using System.Collections.Generic;
 using UnityEngine;
 
-public class WatermelonController : MonoBehaviour
+public class ShellController : MonoBehaviour
 {
-
+    
     private void OnTriggerEnter(Collider other)
     {
         // if not collision to weapon, end method
@@ -19,7 +19,7 @@ public class WatermelonController : MonoBehaviour
         {
             if (_weaponController.IsAttacking())
             {
-                this.transform.GetComponentInParent<Launch>().CollisionWatermelon();
+                this.transform.GetComponentInParent<Launch>().CollisionShell(this.gameObject.name);
             
                 //パーティクルを再生する
                 StartCoroutine("CollisionCoroutine");
@@ -33,8 +33,11 @@ public class WatermelonController : MonoBehaviour
         //パーティクルの位置がずれないように停止します
         this.gameObject.GetComponent<Rigidbody>().isKinematic = true;
         
-        //メッシュを無効化して見えなくする
-        this.gameObject.GetComponentInChildren<MeshRenderer>().enabled = false;
+        //配下の全てのメッシュを無効化して見えなくする
+        MeshRenderer[] mrChild = this.gameObject.GetComponentsInChildren<MeshRenderer>();
+        foreach ( MeshRenderer mr  in mrChild ) {
+            mr.enabled = false;
+        }        
         
         //2回当たることがあるので当たり判定を無くします
         this.gameObject.GetComponent<Collider>().enabled = false;
