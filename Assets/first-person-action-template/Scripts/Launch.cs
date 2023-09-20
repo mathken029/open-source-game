@@ -30,6 +30,7 @@ public class Launch : MonoBehaviour
     private bool isLaunching = false;
     private GameObject shell;
     
+    private int shellNumber;
     private const int SHELL_WATERMELON = 0;
     private const int SHELL_BOMB = 1;
     
@@ -54,7 +55,14 @@ public class Launch : MonoBehaviour
         isLaunching = true;
 
         //ここをこの後乱数にする
-        int shellNumber = SHELL_BOMB;
+        if (shellNumber == SHELL_WATERMELON)
+        {
+            shellNumber = SHELL_BOMB;
+        }
+        else if (shellNumber == SHELL_BOMB)
+        {
+            shellNumber = SHELL_WATERMELON;
+        }
 
         switch (shellNumber)
         {

@@ -6,15 +6,18 @@ using TMPro;
 
 public class DisplayController : MonoBehaviour
 {
-    //ポイント表示
-    [SerializeField] private TextMeshProUGUI pointText;
+    //ポイントと残り時間表示用のテキストです
+    [SerializeField] private TextMeshProUGUI timeAndPointText;
     
-    //ポイント表示
+    //操作説明用のテキストです
     [SerializeField] private TextMeshProUGUI explanationText;
 
-    // ゲームのポイント（別クラスに分離する）
-    private int displayPoints = 0;
+    //残り時間です
+    [SerializeField] private float timeRemaining;
 
+    //表示するポイント
+    private int displayPoints = 0;
+    
     private void Start()
     {
         explanationText.text = "操作説明\n" +
@@ -39,7 +42,19 @@ public class DisplayController : MonoBehaviour
 
     private void Update()
     {
-        pointText.text = "得点：" + displayPoints + "点";
+        if (timeRemaining > 0)
+        {
+            //経過した時間を引いていきます
+            timeRemaining -= Time.deltaTime;
+        
+            timeAndPointText.text = timeRemaining.ToString("0.00")+ "\n" +
+                                    displayPoints + "点";
+        }
+        else
+        {
+            //リトライ画面を表示します
+        }
+        
         
     }
 }

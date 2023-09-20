@@ -123,6 +123,79 @@ NavMeshSettings:
     debug:
       m_Flags: 0
   m_NavMeshData: {fileID: 0}
+--- !u!1001 &375496542
+PrefabInstance:
+  m_ObjectHideFlags: 0
+  serializedVersion: 2
+  m_Modification:
+    serializedVersion: 3
+    m_TransformParent: {fileID: 0}
+    m_Modifications:
+    - target: {fileID: 2855529665997402509, guid: 6eb1ae30fa9ef2145b3aae047c7e4046,
+        type: 3}
+      propertyPath: m_Name
+      value: just_a_simple_bomb
+      objectReference: {fileID: 0}
+    - target: {fileID: 7068762572715672858, guid: 6eb1ae30fa9ef2145b3aae047c7e4046,
+        type: 3}
+      propertyPath: m_RootOrder
+      value: 10
+      objectReference: {fileID: 0}
+    - target: {fileID: 7068762572715672858, guid: 6eb1ae30fa9ef2145b3aae047c7e4046,
+        type: 3}
+      propertyPath: m_LocalPosition.x
+      value: 1.47
+      objectReference: {fileID: 0}
+    - target: {fileID: 7068762572715672858, guid: 6eb1ae30fa9ef2145b3aae047c7e4046,
+        type: 3}
+      propertyPath: m_LocalPosition.y
+      value: 0.44
+      objectReference: {fileID: 0}
+    - target: {fileID: 7068762572715672858, guid: 6eb1ae30fa9ef2145b3aae047c7e4046,
+        type: 3}
+      propertyPath: m_LocalPosition.z
+      value: 0.070174
+      objectReference: {fileID: 0}
+    - target: {fileID: 7068762572715672858, guid: 6eb1ae30fa9ef2145b3aae047c7e4046,
+        type: 3}
+      propertyPath: m_LocalRotation.w
+      value: 1
+      objectReference: {fileID: 0}
+    - target: {fileID: 7068762572715672858, guid: 6eb1ae30fa9ef2145b3aae047c7e4046,
+        type: 3}
+      propertyPath: m_LocalRotation.x
+      value: 0
+      objectReference: {fileID: 0}
+    - target: {fileID: 7068762572715672858, guid: 6eb1ae30fa9ef2145b3aae047c7e4046,
+        type: 3}
+      propertyPath: m_LocalRotation.y
+      value: 0
+      objectReference: {fileID: 0}
+    - target: {fileID: 7068762572715672858, guid: 6eb1ae30fa9ef2145b3aae047c7e4046,
+        type: 3}
+      propertyPath: m_LocalRotation.z
+      value: 0
+      objectReference: {fileID: 0}
+    - target: {fileID: 7068762572715672858, guid: 6eb1ae30fa9ef2145b3aae047c7e4046,
+        type: 3}
+      propertyPath: m_LocalEulerAnglesHint.x
+      value: 0
+      objectReference: {fileID: 0}
+    - target: {fileID: 7068762572715672858, guid: 6eb1ae30fa9ef2145b3aae047c7e4046,
+        type: 3}
+      propertyPath: m_LocalEulerAnglesHint.y
+      value: 0
+      objectReference: {fileID: 0}
+    - target: {fileID: 7068762572715672858, guid: 6eb1ae30fa9ef2145b3aae047c7e4046,
+        type: 3}
+      propertyPath: m_LocalEulerAnglesHint.z
+      value: 0
+      objectReference: {fileID: 0}
+    m_RemovedComponents: []
+    m_RemovedGameObjects: []
+    m_AddedGameObjects: []
+    m_AddedComponents: []
+  m_SourcePrefab: {fileID: 100100000, guid: 6eb1ae30fa9ef2145b3aae047c7e4046, type: 3}
 --- !u!1 &377425177
 GameObject:
   m_ObjectHideFlags: 0
@@ -610,8 +683,9 @@ MonoBehaviour:
   m_Script: {fileID: 11500000, guid: 028642c55d6d4654994f958957208b74, type: 3}
   m_Name: 
   m_EditorClassIdentifier: 
-  pointText: {fileID: 870899216}
+  timeAndPointText: {fileID: 870899216}
   explanationText: {fileID: 1372320214}
+  timeRemaining: 60
 --- !u!4 &792446528
 Transform:
   m_ObjectHideFlags: 0
@@ -689,7 +763,7 @@ GameObject:
   - component: {fileID: 870899217}
   - component: {fileID: 870899216}
   m_Layer: 5
-  m_Name: PointText (TMP)
+  m_Name: TimeAndPoint Text(TMP)
   m_TagString: Untagged
   m_Icon: {fileID: 0}
   m_NavMeshLayer: 0
@@ -735,7 +809,7 @@ MonoBehaviour:
   m_OnCullStateChanged:
     m_PersistentCalls:
       m_Calls: []
-  m_text: Point
+  m_text: TimeAndPoint
   m_isRightToLeft: 0
   m_fontAsset: {fileID: 11400000, guid: dfddd24ee6e138f4e9879b4de40ba8bc, type: 2}
   m_sharedMaterial: {fileID: -7920506018182394985, guid: dfddd24ee6e138f4e9879b4de40ba8bc,
@@ -3546,7 +3620,7 @@ MonoBehaviour:
     type: 3}
   bombPrefab: {fileID: 2855529665997402509, guid: 6eb1ae30fa9ef2145b3aae047c7e4046,
     type: 3}
-  waitLaunchTime: 2
+  waitLaunchTime: 0.5
   LaunchX: -30
   LaunchY: 460
   LaunchZ: -237
