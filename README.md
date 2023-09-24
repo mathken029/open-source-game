@@ -10,6 +10,10 @@
 - "Spiked Ball" (https://skfb.ly/6zqV6) by azzajess is licensed under Creative Commons Attribution (http://creativecommons.org/licenses/by/4.0/).
 - "Canon de Gribeauval" (https://skfb.ly/6wZM8) by Lucas Garnier is licensed under Creative Commons Attribution (http://creativecommons.org/licenses/by/4.0/).
 
+### Levels
+
+- "Let's go to the beach! - Beach themed diorama" (https://skfb.ly/ouZW8) by Jef Belmans is licensed under Creative Commons Attribution (http://creativecommons.org/licenses/by/4.0/).
+
 ### Characters
 
 - "ユニティちゃん 3D モデルデータ" (https://unity-chan.com/download/releaseNote.php?id=UnityChan) is licensed under “Unity-Chan” License Terms and Conditions (https://unity-chan.com/contents/license_jp/)
