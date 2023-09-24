@@ -5,6 +5,7 @@ using UnityEngine;
 using UnityEngine.SceneManagement;
 using TMPro;
 using UnityEngine.Serialization;
+using unityroom.Api;
 
 public class DisplayController : MonoBehaviour
 {
@@ -26,8 +27,11 @@ public class DisplayController : MonoBehaviour
     //音を再生するためのコンポーネントの情報を格納する変数です
     [SerializeField] private AudioSource audioSource;
     
-    //表示するポイント
-    private int displayPoints = 0;
+    //表示するポイントです
+    private float displayPoints = 0;
+    
+    //ポイントが何度も送信されないためのフラグです
+    private bool pointsSendFlag = true;
     
     private void Start()
     {
@@ -63,6 +67,13 @@ public class DisplayController : MonoBehaviour
             //BGMを止めます
             audioSource.Stop();
 
+            if (pointsSendFlag)
+            {
+                //unityroomにスコアを送付します
+                UnityroomApiClient.Instance.SendScore(1, displayPoints, ScoreboardWriteMode.HighScoreDesc);
+                pointsSendFlag = false;
+            }
+
             if (Input.GetKeyDown(KeyCode.R))
             {
                 Retry();
@@ -75,6 +86,9 @@ public class DisplayController : MonoBehaviour
 
     public void Retry()
     {
+        //再度ゲーム終了した際にスコアが送付されるようにします
+        pointsSendFlag = true;
+        
         //シーンを再度読み込みます
         SceneManager.LoadScene(SceneManager.GetActiveScene().name);
         
