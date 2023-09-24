@@ -2,6 +2,7 @@ using System;
 using System.Collections;
 using System.Collections.Generic;
 using UnityEngine;
+using AnnulusGames.LucidTools.RandomKit;
 
 public class Launch : MonoBehaviour
 {
@@ -12,6 +13,7 @@ public class Launch : MonoBehaviour
     [SerializeField] private float LaunchX;
     [SerializeField] private float LaunchY;
     [SerializeField] private float LaunchZ;
+    [SerializeField] private WeightedList<int> weightedList;
 
     //武器にぶつかったときの音です
     [SerializeField] private AudioClip seCollisionWatermelon;
@@ -29,7 +31,6 @@ public class Launch : MonoBehaviour
     //各オブジェクトのポイントを定義します
     [SerializeField] private int watermelonPoints;
     [SerializeField] private int bombSubtractionPoints;
-    [SerializeField] private int spikedBallSubtractionPoints;
     
 
 
@@ -39,8 +40,7 @@ public class Launch : MonoBehaviour
     private const int SHELL_WATERMELON = 0;
     private const int SHELL_BOMB = 1;
     private const int SHELL_SPIKEDBALL = 2;
-    
-    private int shellNumber = SHELL_BOMB;
+    private const int SHELL_NOTHING = 3;
     
     private const string OBJECTNAME_WATERMELON = "watermelon(Clone)";
     private const string OBJECTNAME_BOMB = "just_a_simple_bomb(Clone)";
@@ -55,7 +55,6 @@ public class Launch : MonoBehaviour
         }
         else
         {
-            audioSource.PlayOneShot(seCanon);
             StartCoroutine("LaunchCoroutine");
         }
     }
@@ -63,20 +62,9 @@ public class Launch : MonoBehaviour
     IEnumerator LaunchCoroutine()
     {
         isLaunching = true;
-
-        //ここをこの後乱数にする
-        if (shellNumber == SHELL_SPIKEDBALL)
-        {
-            shellNumber = SHELL_WATERMELON;
-        }
-        else if (shellNumber == SHELL_WATERMELON)
-        {
-            shellNumber = SHELL_BOMB;
-        }
-        else if (shellNumber == SHELL_BOMB)
-        {
-            shellNumber = SHELL_SPIKEDBALL;
-        }
+        
+        //重み付けした乱数を格納します
+        int shellNumber = weightedList.RandomElement();
 
         switch (shellNumber)
         {
@@ -91,8 +79,16 @@ public class Launch : MonoBehaviour
             case SHELL_SPIKEDBALL:
                 shell = Instantiate(spikedBallPrefab, transform.position, transform.rotation, transform);
                 break;
+            
+            case SHELL_NOTHING:
+                break;
         }
-        shell.GetComponent<Rigidbody>().AddForce(new Vector3(LaunchX, LaunchY, LaunchZ));
+
+        if (shellNumber != SHELL_NOTHING)
+        {
+            audioSource.PlayOneShot(seCanon);
+            shell.GetComponent<Rigidbody>().AddForce(new Vector3(LaunchX, LaunchY, LaunchZ));
+        }
         yield return new WaitForSeconds(waitLaunchTime);
         
         isLaunching = false;

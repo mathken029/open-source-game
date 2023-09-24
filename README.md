@@ -17,6 +17,10 @@
 
 - "Noto Sans" (https://fonts.google.com/noto/specimen/Noto+Sans+JP) is licensed under SIL Open Font License (https://scripts.sil.org/cms/scripts/page.php?site_id=nrsi&id=OFL)
 
+### Libraries
+
+- "LucidRandom" (https://github.com/AnnulusGames/LucidRandom) is licensed under MIT License (https://github.com/AnnulusGames/LucidRandom/blob/main/LICENSE).
+
 ## Sounds
 
 ### Sound Effects

@@ -3494,10 +3494,20 @@ MonoBehaviour:
     type: 3}
   spikedBallPrefab: {fileID: 1618243613059840817, guid: 757f98ed9c61e144e95331382c8de423,
     type: 3}
-  waitLaunchTime: 0.6976744
+  waitLaunchTime: 0.7058824
   LaunchX: -30
   LaunchY: 460
   LaunchZ: -250
+  weightedList:
+    list:
+    - value: 0
+      weight: 0.5
+    - value: 1
+      weight: 0.2
+    - value: 2
+      weight: 0.2
+    - value: 3
+      weight: 0.1
   seCollisionWatermelon: {fileID: 8300000, guid: a26cf017964d0ff44af22a6a61600756,
     type: 3}
   seBombAttacked: {fileID: 8300000, guid: 6ad164b1a4bac1a46bb6c779377c9eb2, type: 3}
@@ -3508,7 +3518,6 @@ MonoBehaviour:
   displayController: {fileID: 792446526}
   watermelonPoints: 20
   bombSubtractionPoints: 10
-  spikedBallSubtractionPoints: 10
 --- !u!4 &1365761239
 Transform:
   m_ObjectHideFlags: 0

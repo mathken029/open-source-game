@@ -1,5 +1,12 @@
 {
   "dependencies": {
+    "com.annulusgames.lucid-random": {
+      "version": "https://github.com/AnnulusGames/LucidRandom.git?path=/Assets/LucidRandom",
+      "depth": 0,
+      "source": "git",
+      "dependencies": {},
+      "hash": "c5fce2228395fc5db6939dc045ff2522ea92c024"
+    },
     "com.unity.burst": {
       "version": "1.8.4",
       "depth": 1,
