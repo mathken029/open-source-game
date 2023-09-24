@@ -8,6 +8,7 @@
 - "Watermelon" (https://skfb.ly/oxzZp) by Lassi Kaukonen is licensed under Creative Commons Attribution (http://creativecommons.org/licenses/by/4.0/).
 - "Just a Simple Bomb" (https://skfb.ly/oxDLx) by Incg5764 is licensed under Creative Commons Attribution (http://creativecommons.org/licenses/by/4.0/).
 - "Spiked Ball" (https://skfb.ly/6zqV6) by azzajess is licensed under Creative Commons Attribution (http://creativecommons.org/licenses/by/4.0/).
+- "Canon de Gribeauval" (https://skfb.ly/6wZM8) by Lucas Garnier is licensed under Creative Commons Attribution (http://creativecommons.org/licenses/by/4.0/).
 
 ### Characters
 

@@ -1,0 +1,11 @@
+Model Information:
+* title:	Canon de Gribeauval
+* source:	https://sketchfab.com/3d-models/canon-de-gribeauval-3cb4f25c33e24f61876c9bbea3eb5933
+* author:	Lucas Garnier (https://sketchfab.com/nocyde)
+
+Model License:
+* license type:	CC-BY-4.0 (http://creativecommons.org/licenses/by/4.0/)
+* requirements:	Author must be credited. Commercial use is allowed.
+
+If you use this 3D model in your project be sure to copy paste this credit wherever you share it:
+This work is based on "Canon de Gribeauval" (https://sketchfab.com/3d-models/canon-de-gribeauval-3cb4f25c33e24f61876c9bbea3eb5933) by Lucas Garnier (https://sketchfab.com/nocyde) licensed under CC-BY-4.0 (http://creativecommons.org/licenses/by/4.0/)
