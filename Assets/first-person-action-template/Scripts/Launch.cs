@@ -1,3 +1,4 @@
+using System;
 using System.Collections;
 using System.Collections.Generic;
 using UnityEngine;
@@ -17,7 +18,8 @@ public class Launch : MonoBehaviour
     [SerializeField] private AudioClip seBombAttacked;
     [SerializeField] private AudioClip seSpikedBallGuarded;
     [SerializeField] private AudioClip seSpikedBallHit;
-
+    [SerializeField] private AudioClip seCanon;
+    
     //音を再生するためのコンポーネントの情報を格納する変数です
     [SerializeField] private AudioSource audioSource;
     
@@ -43,7 +45,7 @@ public class Launch : MonoBehaviour
     private const string OBJECTNAME_WATERMELON = "watermelon(Clone)";
     private const string OBJECTNAME_BOMB = "just_a_simple_bomb(Clone)";
     private const string OBJECTNAME_SPIKEDBALL = "spiked_ball(Clone)";
-    
+
     // Update is called once per frame
     void FixedUpdate()
     {
@@ -53,6 +55,7 @@ public class Launch : MonoBehaviour
         }
         else
         {
+            audioSource.PlayOneShot(seCanon);
             StartCoroutine("LaunchCoroutine");
         }
     }

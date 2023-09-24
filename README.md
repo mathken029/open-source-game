@@ -25,3 +25,8 @@
 - "Cut01" (https://otologic.jp/free/se/cut01.html) is licensed under CC BY 4.0 (https://otologic.jp/free/license.html)
 - "Onoma-Impact08" (https://otologic.jp/free/se/impact01.html) is licensed under CC BY 4.0 (https://otologic.jp/free/license.html)
 - "Hit06" (https://otologic.jp/free/se/hit01.html) is licensed under CC BY 4.0 (https://otologic.jp/free/license.html)
+- "Cannon01" (https://otologic.jp/free/se/guns01.html) is licensed under CC BY 4.0 (https://otologic.jp/free/license.html)
+
+### BGM
+
+- "Orpheus In The Under World" https://kamatamago.com/sozai/classic/C00003/ is licensed under original policy (https://kamatamago.com/sozai-rule/)

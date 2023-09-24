@@ -4,6 +4,7 @@ using System.Collections.Generic;
 using UnityEngine;
 using UnityEngine.SceneManagement;
 using TMPro;
+using UnityEngine.Serialization;
 
 public class DisplayController : MonoBehaviour
 {
@@ -19,9 +20,20 @@ public class DisplayController : MonoBehaviour
     //残り時間です
     [SerializeField] private float timeRemaining;
 
+    //BGMです
+    [SerializeField] private AudioClip bgmOrpheusInTheUnderWorld;
+
+    //音を再生するためのコンポーネントの情報を格納する変数です
+    [SerializeField] private AudioSource audioSource;
+    
     //表示するポイント
     private int displayPoints = 0;
     
+    private void Start()
+    {
+        audioSource.PlayOneShot(bgmOrpheusInTheUnderWorld);
+    }
+
     public void AddPoints(int points)
     {
         displayPoints += points;
@@ -47,6 +59,9 @@ public class DisplayController : MonoBehaviour
             
             //リトライボタンを表示します
             retryButton.SetActive(true);
+            
+            //BGMを止めます
+            audioSource.Stop();
 
             if (Input.GetKeyDown(KeyCode.R))
             {
@@ -65,5 +80,9 @@ public class DisplayController : MonoBehaviour
         
         //リトライボタンを非表示にします
         retryButton.SetActive(false);
+        
+        //BGMを再度再生します
+        audioSource.PlayOneShot(bgmOrpheusInTheUnderWorld);
+
     }
 }

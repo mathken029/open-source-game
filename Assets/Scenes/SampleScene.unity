@@ -614,7 +614,10 @@ MonoBehaviour:
   timeAndPointText: {fileID: 870899216}
   explanationText: {fileID: 1372320214}
   retryButton: {fileID: 1664124128}
-  timeRemaining: 60
+  timeRemaining: 49
+  bgmOrpheusInTheUnderWorld: {fileID: 8300000, guid: ef404398fb4ba81429e0aa53d234ad40,
+    type: 3}
+  audioSource: {fileID: 1320895417}
 --- !u!4 &792446528
 Transform:
   m_ObjectHideFlags: 0
@@ -3366,7 +3369,7 @@ AudioSource:
   OutputAudioMixerGroup: {fileID: 0}
   m_audioClip: {fileID: 0}
   m_PlayOnAwake: 0
-  m_Volume: 1
+  m_Volume: 0.4
   m_Pitch: 1
   Loop: 0
   Mute: 0
@@ -3491,7 +3494,7 @@ MonoBehaviour:
     type: 3}
   spikedBallPrefab: {fileID: 1618243613059840817, guid: 757f98ed9c61e144e95331382c8de423,
     type: 3}
-  waitLaunchTime: 1
+  waitLaunchTime: 0.6976744
   LaunchX: -30
   LaunchY: 460
   LaunchZ: -250
@@ -3500,6 +3503,7 @@ MonoBehaviour:
   seBombAttacked: {fileID: 8300000, guid: 6ad164b1a4bac1a46bb6c779377c9eb2, type: 3}
   seSpikedBallGuarded: {fileID: 8300000, guid: 47086eb8a48bc5945b01b22408b1a9d1, type: 3}
   seSpikedBallHit: {fileID: 8300000, guid: cb8607e622008064f9706ea2ec982210, type: 3}
+  seCanon: {fileID: 8300000, guid: 0dd766830d14df044853ffe0fb00d1b5, type: 3}
   audioSource: {fileID: 1320895417}
   displayController: {fileID: 792446526}
   watermelonPoints: 20
