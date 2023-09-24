@@ -1,5 +1,11 @@
 # first-person-action-template
 
+## スコアランキング対応時の注意
+
+- パブリックリポジトリのままで以下のランキングに対応する場合、インスペクタにキーを書いたままだと公開されてしまいます。そのため、キーをインスペクタに書いてビルドしてからキーを消してからコミットすることを推奨します。
+  - https://help.unityroom.com/how-to-implement-scoreboard
+  - もしキーをつけたままコミットしてしまったら、unityroom の機能でキーの方を変更しましょう
+
 ## Assets
 
 ### Objects
