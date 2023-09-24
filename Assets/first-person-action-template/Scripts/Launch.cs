@@ -10,10 +10,15 @@ public class Launch : MonoBehaviour
     [SerializeField] private GameObject bombPrefab;
     [SerializeField] private GameObject spikedBallPrefab;
     [SerializeField] private float waitLaunchTime;
-    [SerializeField] private float LaunchX;
-    [SerializeField] private float LaunchY;
-    [SerializeField] private float LaunchZ;
+    [SerializeField] private float launchPoint01X;
+    [SerializeField] private float launchPoint01Y;
+    [SerializeField] private float launchPoint01Z;
+    [SerializeField] private float launchPoint02X;
+    [SerializeField] private float launchPoint02Y;
+    [SerializeField] private float launchPoint02Z;
     [SerializeField] private WeightedList<int> weightedList;
+    [SerializeField] private GameObject launchPoint01;
+    [SerializeField] private GameObject launchPoint02;
 
     //武器にぶつかったときの音です
     [SerializeField] private AudioClip seCollisionWatermelon;
@@ -63,21 +68,45 @@ public class Launch : MonoBehaviour
     {
         isLaunching = true;
         
-        //重み付けした乱数を格納します
+        //どの砲弾を発射するかを決めます
         int shellNumber = weightedList.RandomElement();
+        
+        //どちらの砲台から発射するかを決めます
+        int canonNumber = LucidRandom.Range(0, 2);
 
         switch (shellNumber)
         {
             case SHELL_WATERMELON:
-                shell = Instantiate(watermelonPrefab, transform.position, transform.rotation, transform);
+                if (canonNumber == 0)
+                {
+                    shell = Instantiate(watermelonPrefab, launchPoint01.transform.position, launchPoint01.transform.rotation, launchPoint01.transform);
+                }
+                else
+                {
+                    shell = Instantiate(watermelonPrefab, launchPoint02.transform.position, launchPoint02.transform.rotation, launchPoint02.transform);
+                }
                 break;
             
             case SHELL_BOMB:
-                shell = Instantiate(bombPrefab, transform.position, transform.rotation, transform);
+                if (canonNumber == 0)
+                {
+                    shell = Instantiate(bombPrefab, launchPoint01.transform.position, launchPoint01.transform.rotation, launchPoint01.transform);
+                }
+                else
+                {
+                    shell = Instantiate(bombPrefab, launchPoint02.transform.position, launchPoint02.transform.rotation, launchPoint02.transform);
+                }
                 break;
             
             case SHELL_SPIKEDBALL:
-                shell = Instantiate(spikedBallPrefab, transform.position, transform.rotation, transform);
+                if (canonNumber == 0)
+                {
+                    shell = Instantiate(spikedBallPrefab, launchPoint01.transform.position, launchPoint01.transform.rotation, launchPoint01.transform);
+                }
+                else
+                {
+                    shell = Instantiate(spikedBallPrefab, launchPoint02.transform.position, launchPoint02.transform.rotation, launchPoint02.transform);
+                }
                 break;
             
             case SHELL_NOTHING:
@@ -87,7 +116,14 @@ public class Launch : MonoBehaviour
         if (shellNumber != SHELL_NOTHING)
         {
             audioSource.PlayOneShot(seCanon);
-            shell.GetComponent<Rigidbody>().AddForce(new Vector3(LaunchX, LaunchY, LaunchZ));
+            if (canonNumber == 0)
+            {
+                shell.GetComponent<Rigidbody>().AddForce(new Vector3(launchPoint01X, launchPoint01Y, launchPoint01Z));
+            }
+            else
+            {
+                shell.GetComponent<Rigidbody>().AddForce(new Vector3(launchPoint02X, launchPoint02Y, launchPoint02Z));
+            }
         }
         yield return new WaitForSeconds(waitLaunchTime);
         
