@@ -3812,6 +3812,7 @@ MonoBehaviour:
   isIkActive: 1
   mixWeight: 1
   attackWaitTime: 0.1
+  swingDuration: 0.1
 --- !u!1 &1645530520
 GameObject:
   m_ObjectHideFlags: 0

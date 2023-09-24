@@ -25,6 +25,7 @@ namespace UnityChan
 		[SerializeField] private  bool isIkActive = false;
 		[SerializeField] private  float mixWeight = 1.0f;
 		[SerializeField] private  float attackWaitTime;
+		[SerializeField] private  float swingDuration;
 
 		void Awake ()
 		{
@@ -44,89 +45,92 @@ namespace UnityChan
 				mixWeight = 1.0f;
 			else if (mixWeight <= 0.0f)
 				mixWeight = 0.0f;
-
-			// if (Input.GetButtonDown("Fire1"))
-			// {
-			// 	if (weapon.GetComponent<WeaponController>().IsAttacking())
-			// 	{
-			// 		//何もしない
-			// 	}
-			// 	else
-			// 	{
-			// 		StartCoroutine("AttackCoroutine");
-			// 	}
-			// }
 		}
 		
-		// IEnumerator AttackCoroutine()
-		// {
-		// 	weapon.GetComponent<WeaponController>().AttackStart();
-		// 	weapon.GetComponentInChildren<TrailRenderer>().enabled = true;
-		//
-		// 	yield return new WaitForSeconds(attackWaitTime);
-		//
-		// 	//武器の角度を変える
-		// 	weapon.transform.Rotate(-100f, 0.0f, 0.0f);
-		// 	
-		// 	weapon.GetComponentInChildren<TrailRenderer>().enabled = false;
-		// 	weapon.GetComponent<WeaponController>().AttackEnd();
-		// }
+        enum AttackState
+        {
+            None,
+            StartAttacking,
+            SwingWeapon,
+            WaitAttacking,
+        };
 
+        private AttackState attackState = AttackState.None;
+        private float swingingTime = 0f;
+        private float waitAttackingTime = 0f;
 
-		// void OnAnimatorIK (int layerIndex)
-		// {
-		// 	if (isIkActive) {
-		// 		anim.SetIKPositionWeight (AvatarIKGoal.RightHand, mixWeight);
-		// 		anim.SetIKRotationWeight (AvatarIKGoal.RightHand, mixWeight);
-		// 		anim.SetIKPosition (AvatarIKGoal.RightHand, targetObj.position);
-		// 		anim.SetIKRotation (AvatarIKGoal.RightHand, targetObj.rotation);
-		// 	}
-		// }
+        void OnAnimatorIK(int layerIndex)
+        {
+            if (isIkActive)
+            {
+                anim.SetIKPositionWeight(AvatarIKGoal.RightHand, mixWeight);
+                anim.SetIKRotationWeight(AvatarIKGoal.RightHand, mixWeight);
+                anim.SetIKPosition(AvatarIKGoal.RightHand, targetObj.position);
 
-		void OnAnimatorIK (int layerIndex)
-		{
-			if (isIkActive) {
-				anim.SetIKPositionWeight (AvatarIKGoal.RightHand, mixWeight);
-				anim.SetIKRotationWeight (AvatarIKGoal.RightHand, mixWeight);
-				anim.SetIKPosition (AvatarIKGoal.RightHand, targetObj.position);
-		
-				if (Input.GetButtonDown("Fire1"))
-				{
-					if (weapon.GetComponent<WeaponController>().IsAttacking())
-					{
-						//何もしない
-					}
-					else
-					{
-						StartCoroutine("AttackCoroutine");
-					}
-				}
-				else
-				{
-					anim.SetIKRotation (AvatarIKGoal.RightHand, targetObj.rotation);
-				}
-			}
-		}
-		
-		IEnumerator AttackCoroutine()
-		{
-			weapon.GetComponent<WeaponController>().AttackStart();
-			weapon.GetComponentInChildren<TrailRenderer>().enabled = true;
-		
-			yield return new WaitForSeconds(attackWaitTime);
-		
-			//角度を変えたオブジェクトと角度を合わせることで剣を振る
-			anim.SetIKRotation (AvatarIKGoal.RightHand, targetObjRotation.rotation);
-			
-			weapon.GetComponentInChildren<TrailRenderer>().enabled = false;
-			weapon.GetComponent<WeaponController>().AttackEnd();
-		}
+                Quaternion startRotation = targetObj.rotation;
+                Quaternion targetRotation = targetObjRotation.rotation;
 
-		// void OnGUI ()
-		// {
-		// 	Rect rect1 = new Rect (10, Screen.height - 20, 400, 30);
-		// 	isIkActive = GUI.Toggle (rect1, isIkActive, "IK Active");
-		// }
+                switch (attackState)
+                {
+                    case AttackState.None:
+                        if (Input.GetButtonDown("Fire1"))
+                        {
+                            if (!weapon.GetComponent<WeaponController>().IsAttacking())
+                            {
+                                // 攻撃開始ステートに移行
+                                attackState = AttackState.StartAttacking;
+                            }
+                        }
+                        break;
 
+                    case AttackState.StartAttacking:
+                        // 攻撃開始のための初期化
+                        weapon.GetComponent<WeaponController>().AttackStart();
+                        weapon.GetComponentInChildren<TrailRenderer>().enabled = true;
+                        swingingTime = 0f;
+                        // 武器を振るステートに移行
+                        attackState = AttackState.SwingWeapon;
+                        break;
+
+                    case AttackState.SwingWeapon:
+                        // swingDurationの時間をかけて振る
+                        if (swingingTime < swingDuration)
+                        {
+                            float t = swingingTime / swingDuration;
+                            Quaternion currentRotation = Quaternion.Lerp(startRotation, targetRotation, t);
+                            anim.SetIKRotation(AvatarIKGoal.RightHand, currentRotation);
+
+                            swingingTime += Time.deltaTime;
+                        }
+                        // 振り終わったら次の攻撃待ちステートに移行
+                        else
+                        {
+                            anim.SetIKRotation(AvatarIKGoal.RightHand, targetRotation);
+                            waitAttackingTime = 0f;
+                            attackState = AttackState.WaitAttacking;
+                        }
+                        break;
+
+                    case AttackState.WaitAttacking:
+                        anim.SetIKRotation(AvatarIKGoal.RightHand, targetRotation);
+                        waitAttackingTime += Time.deltaTime;
+                        // 攻撃待ちが済んだら攻撃の終了処理をして通常ステートに移行
+                        if (waitAttackingTime >= attackWaitTime)
+                        {
+                            weapon.GetComponentInChildren<TrailRenderer>().enabled = false;
+                            weapon.GetComponent<WeaponController>().AttackEnd();
+
+                            attackState = AttackState.None;
+                        }
+                        break;
+                }
+
+                // 通常時の回転値を右手に割り当てればいいステートの場合はここで一括処理
+                if (attackState == AttackState.None || attackState == AttackState.StartAttacking)
+                {
+                    anim.SetIKRotation(AvatarIKGoal.RightHand, targetObj.rotation);
+                }
+            }
+        }
 	}
 }
