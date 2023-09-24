@@ -25,7 +25,6 @@
 ### Libraries
 
 - "LucidRandom" (https://github.com/AnnulusGames/LucidRandom) is licensed under MIT License (https://github.com/AnnulusGames/LucidRandom/blob/main/LICENSE).
-- "unityroom-client-library" (https://github.com/naichilab/unityroom-client-library) is licensed under MIT License (https://github.com/naichilab/unityroom-client-library#%E3%83%A9%E3%82%A4%E3%82%BB%E3%83%B3%E3%82%B9).
 
 ## Sounds
 
