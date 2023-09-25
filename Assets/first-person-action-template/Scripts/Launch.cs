@@ -49,7 +49,7 @@ public class Launch : MonoBehaviour
     
     private const string OBJECTNAME_WATERMELON = "watermelon(Clone)";
     private const string OBJECTNAME_BOMB = "just_a_simple_bomb(Clone)";
-    private const string OBJECTNAME_SPIKEDBALL = "spiked_ball(Clone)";
+    public const string OBJECTNAME_SPIKEDBALL = "spiked_ball(Clone)";
 
     // Update is called once per frame
     void FixedUpdate()

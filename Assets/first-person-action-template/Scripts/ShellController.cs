@@ -22,6 +22,13 @@ public class ShellController : MonoBehaviour
                 Destroy(this.gameObject);
             }
         }
+        
+        //床に触れたときに消滅します
+        if (collision.gameObject.GetComponent<FloorController>())
+        {
+            //パーティクルを再生する
+            StartCoroutine("HitCoroutine");
+        }
 
     }
 
@@ -33,6 +40,7 @@ public class ShellController : MonoBehaviour
         {
             if (_weaponController.IsAttacking())
             {
+                //攻撃中の武器に当たった場合の処理です
                 if (this.transform.GetComponentInParent<Launch>().ShellAttacked(this.gameObject.name))
                 {
                     //パーティクルを再生する
@@ -41,6 +49,7 @@ public class ShellController : MonoBehaviour
             }
             else
             {
+                //攻撃中ではない武器に当たった場合の処理です
                 if (this.transform.GetComponentInParent<Launch>().ShellGuarded(this.gameObject.name))
                 {
                     //パーティクルを再生する
@@ -48,29 +57,36 @@ public class ShellController : MonoBehaviour
                 }
             }
         }
-
     }
 
     IEnumerator CollisionCoroutine()
     {
-        //パーティクルの位置がずれないように停止します
-        this.gameObject.GetComponent<Rigidbody>().isKinematic = true;
-        
-        //配下の全てのメッシュを無効化して見えなくする
-        MeshRenderer[] mrChild = this.gameObject.GetComponentsInChildren<MeshRenderer>();
-        foreach ( MeshRenderer mr  in mrChild ) {
-            mr.enabled = false;
-        }        
-        
-        //2回当たることがあるので当たり判定を無くします
-        this.gameObject.GetComponent<Collider>().enabled = false;
-
         this.gameObject.GetComponent<ParticleSystem>().Play();
+
+        if (gameObject.name == Launch.OBJECTNAME_SPIKEDBALL)
+        {
+            this.gameObject.GetComponent<Rigidbody>().AddForce(new Vector3(0, 300, 400));
+        }
+        else
+        {
         
-        //パーティクルが終わるのを待ってから消滅します
-        yield return new WaitForSeconds(0.2f);
+            //パーティクルの位置がずれないように停止します
+            this.gameObject.GetComponent<Rigidbody>().isKinematic = true;
         
-        Destroy(this.gameObject);
+            //配下の全てのメッシュを無効化して見えなくする
+            MeshRenderer[] mrChild = this.gameObject.GetComponentsInChildren<MeshRenderer>();
+            foreach ( MeshRenderer mr  in mrChild ) {
+                mr.enabled = false;
+            }        
+        
+            //2回当たることがあるので当たり判定を無くします
+            this.gameObject.GetComponent<Collider>().enabled = false;
+
+            //パーティクルが終わるのを待ってから消滅します
+            yield return new WaitForSeconds(0.2f);
+        
+            Destroy(this.gameObject);
+        }
     }
     
     //ヒットしてすぐ消えるので、パーティクルを再生しません
