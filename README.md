@@ -44,4 +44,4 @@
 
 ### BGM
 
-- "Orpheus In The Under World" https://kamatamago.com/sozai/classic/C00003/ is licensed under original policy (https://kamatamago.com/sozai-rule/)
+- "天国と地獄" https://kamatamago.com/sozai/classic/C00003/ is licensed under original policy (https://kamatamago.com/sozai-rule/)
