@@ -227,6 +227,17 @@
       },
       "url": "https://packages.unity.com"
     },
+    "com.unity.xr.openxr": {
+      "version": "1.7.0",
+      "depth": 0,
+      "source": "registry",
+      "dependencies": {
+        "com.unity.xr.management": "4.0.1",
+        "com.unity.xr.legacyinputhelpers": "2.1.2",
+        "com.unity.inputsystem": "1.4.4"
+      },
+      "url": "https://packages.unity.com"
+    },
     "com.unityroom.client": {
       "version": "https://github.com/naichilab/unityroom-client-library.git?path=Assets/unityroom",
       "depth": 0,
