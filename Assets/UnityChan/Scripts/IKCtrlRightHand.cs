@@ -10,6 +10,7 @@ using System;
 using UnityEngine;
 using System.Collections;
 using Unity.VisualScripting;
+using UnityEngine.XR.Interaction.Toolkit;
 
 namespace UnityChan
 {
@@ -22,6 +23,7 @@ namespace UnityChan
 		[SerializeField] private Transform targetObj = null;
 		[SerializeField] private Transform targetObjRotation = null;
 		[SerializeField] private GameObject weapon;
+		[SerializeField] private GameObject weaponGripHand;
 		[SerializeField] private  bool isIkActive = false;
 		[SerializeField] private  float mixWeight = 1.0f;
 		[SerializeField] private  float attackWaitTime;
@@ -36,9 +38,16 @@ namespace UnityChan
 		{
 			//エディタ上でTrailRendererの動作確認をするために有効化しているため、プレイ時に無効化します
 			weapon.GetComponentInChildren<TrailRenderer>().enabled = false;
+			
+			//武器についているVR用のコンポーネントをオフにします
+			weapon.GetComponent<XRGrabInteractable>().enabled = false;
+			weapon.GetComponent<Rigidbody>().isKinematic = true;
+			
+			//手の子オブジェクトにすることで手の動きに合わせて動くようにします
+			weapon.transform.parent = weaponGripHand.transform;
 		}
 
-		void Update ()
+		void FixedUpdate ()
 		{
 			//Kobayashi
 			if (mixWeight >= 1.0f)
