@@ -1,4 +1,7 @@
-# first-person-action-template
+# vr-action-game-kit
+
+VR アクションゲームを作るための開発キットです。
+3D ゲームと共通でビルドできることを目指しています。
 
 ## スコアランキング対応時の注意
 
