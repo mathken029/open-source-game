@@ -24,8 +24,6 @@ public class WriteAPIKeyWhenBuild : MonoBehaviour
         var type = unityroomApiClient.GetType();
         var clientHmacKeyFieldInfo = type.GetField("HmacKey", BindingFlags.NonPublic | BindingFlags.Instance | BindingFlags.FlattenHierarchy | BindingFlags.SetField);
         clientHmacKeyFieldInfo?.SetValue(unityroomApiClient, apiKey);
-        
-        Debug.Log(apiKey);
     }
 
     // Update is called once per frame
