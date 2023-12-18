@@ -73,3 +73,6 @@ crashlytics-build.properties
 
 # Manage large files with Git LFS
 *NotoSansJP-VariableFont_wght SDF.asset
+
+# API Key of UnityRoom
+apiKey.txt
