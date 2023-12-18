@@ -7,6 +7,6 @@ public class ChangeScene : MonoBehaviour
 {
     public void StartGame()
     {
-        SceneManager.LoadScene("GameScene");
+        SceneManager.LoadScene("send-to-hell_GameScene");
     }
 }
