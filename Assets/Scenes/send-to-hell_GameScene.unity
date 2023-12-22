@@ -8436,6 +8436,10 @@ PrefabInstance:
         type: 3}
       insertIndex: -1
       addedObject: {fileID: 1930014842}
+    - targetCorrespondingSourceObject: {fileID: 100076, guid: 69c3ed15e9d13481e8f7dc4db5532fb6,
+        type: 3}
+      insertIndex: -1
+      addedObject: {fileID: 1930014853}
   m_SourcePrefab: {fileID: 100100000, guid: 69c3ed15e9d13481e8f7dc4db5532fb6, type: 3}
 --- !u!1 &1930014840 stripped
 GameObject:
@@ -8476,6 +8480,27 @@ Transform:
     type: 3}
   m_PrefabInstance: {fileID: 1930014839}
   m_PrefabAsset: {fileID: 0}
+--- !u!54 &1930014847 stripped
+Rigidbody:
+  m_CorrespondingSourceObject: {fileID: 5400000, guid: 69c3ed15e9d13481e8f7dc4db5532fb6,
+    type: 3}
+  m_PrefabInstance: {fileID: 1930014839}
+  m_PrefabAsset: {fileID: 0}
+--- !u!114 &1930014853
+MonoBehaviour:
+  m_ObjectHideFlags: 0
+  m_CorrespondingSourceObject: {fileID: 0}
+  m_PrefabInstance: {fileID: 0}
+  m_PrefabAsset: {fileID: 0}
+  m_GameObject: {fileID: 1930014840}
+  m_Enabled: 1
+  m_EditorHideFlags: 0
+  m_Script: {fileID: 11500000, guid: de63798c45250fe43a29edaf4b423cc1, type: 3}
+  m_Name: 
+  m_EditorClassIdentifier: 
+  enemyAddForcePowerY: 9000
+  enemyAddForcePowerZ: 15000
+  enemyRigidbody: {fileID: 1930014847}
 --- !u!1 &1977503708 stripped
 GameObject:
   m_CorrespondingSourceObject: {fileID: 100248, guid: 69c3ed15e9d13481e8f7dc4db5532fb6,

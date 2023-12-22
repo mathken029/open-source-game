@@ -72,6 +72,20 @@ public class WeaponController : MonoBehaviour
             //武器を消滅させ、一定時間後再度表示します
             StartCoroutine(EnableWeaponCoroutine());
         }
+        
+        //当たったのが敵かどうかを判定します
+        if (other.gameObject.TryGetComponent<EnemyController>(
+                out EnemyController _enemyControllerIdentification))
+        {
+            //プレイヤーのヒットストップ処理を実行します
+            
+            //プレイヤーの武器が攻撃中であれば敵を倒します
+            if (isAttacking == true)
+            {
+                _enemyControllerIdentification.Beat();
+            }
+        }
+        
     }
     
     /// <Summary>
