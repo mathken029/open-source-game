@@ -7,6 +7,9 @@ public class WeaponController : MonoBehaviour
 {
     [Header("武器が再度表示されるまでの時間")]
     [SerializeField] private float weaponEnableTime;
+    
+    [Header("Trail Rendererの発生する長さ")]
+    [SerializeField] private float weaponTrailRendererTime;
 
     [SerializeField] private Renderer weaponRenderer01;
     [SerializeField] private Renderer weaponRenderer02;
@@ -89,7 +92,7 @@ public class WeaponController : MonoBehaviour
         weaponRenderer10.enabled = false;
         
         weaponCollider.enabled = false;
-        weaponTrailRenderer.enabled = false;
+        weaponTrailRenderer.time = 0;
             
         Debug.Log($"EnableWeaponCoroutine() Start");
             
@@ -109,7 +112,7 @@ public class WeaponController : MonoBehaviour
         weaponRenderer10.enabled = true;
         
         weaponCollider.enabled = true;
-        weaponTrailRenderer.enabled = true;
+        weaponTrailRenderer.time = weaponTrailRendererTime;
 
         Debug.Log($"EnableWeaponCoroutine() End");
 

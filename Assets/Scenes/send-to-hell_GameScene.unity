@@ -8563,6 +8563,11 @@ PrefabInstance:
       propertyPath: m_LocalEulerAnglesHint.z
       value: -228.689
       objectReference: {fileID: 0}
+    - target: {fileID: 8649589826926394016, guid: cb248b79134ae5d4eb90e3f535834f60,
+        type: 3}
+      propertyPath: m_MinVertexDistance
+      value: 1
+      objectReference: {fileID: 0}
     - target: {fileID: 9074911729839732234, guid: cb248b79134ae5d4eb90e3f535834f60,
         type: 3}
       propertyPath: audioSource
@@ -8577,6 +8582,11 @@ PrefabInstance:
         type: 3}
       propertyPath: weaponEnableTime
       value: 0.9
+      objectReference: {fileID: 0}
+    - target: {fileID: 9074911729839732234, guid: cb248b79134ae5d4eb90e3f535834f60,
+        type: 3}
+      propertyPath: weaponTrailRendererTime
+      value: 0.2
       objectReference: {fileID: 0}
     m_RemovedComponents: []
     m_RemovedGameObjects: []
