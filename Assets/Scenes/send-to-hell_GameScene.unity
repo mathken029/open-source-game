@@ -8499,7 +8499,7 @@ MonoBehaviour:
   m_Name: 
   m_EditorClassIdentifier: 
   enemyAddForcePowerY: 9000
-  enemyAddForcePowerZ: 15000
+  enemyAddForcePowerZ: 30000
   enemyRigidbody: {fileID: 1930014847}
 --- !u!1 &1977503708 stripped
 GameObject:
