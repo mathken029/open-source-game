@@ -43,7 +43,9 @@
 - "Onoma-Impact08" (https://otologic.jp/free/se/impact01.html) is licensed under CC BY 4.0 (https://otologic.jp/free/license.html)
 - "Hit06" (https://otologic.jp/free/se/hit01.html) is licensed under CC BY 4.0 (https://otologic.jp/free/license.html)
 - "Cannon01" (https://otologic.jp/free/se/guns01.html) is licensed under CC BY 4.0 (https://otologic.jp/free/license.html)
+- "電撃 06" (https://otologic.jp/free/se/electric-shock01.html) is licensed under CC BY 4.0 (https://otologic.jp/free/license.html)
 
 ### BGM
 
 - "天国と地獄" https://kamatamago.com/sozai/classic/C00003/ is licensed under original policy (https://kamatamago.com/sozai-rule/)
+- "ループ 03" (https://otologic.jp/free/bgm/short-loop01.html) is licensed under CC BY 4.0 (https://otologic.jp/free/license.html)

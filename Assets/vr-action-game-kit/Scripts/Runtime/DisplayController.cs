@@ -22,7 +22,7 @@ public class DisplayController : MonoBehaviour
     [SerializeField] private float timeRemaining;
 
     //BGMです
-    [SerializeField] private AudioClip bgmOrpheusInTheUnderWorld;
+    [SerializeField] private AudioClip BGM;
 
     //音を再生するためのコンポーネントの情報を格納する変数です
     [SerializeField] private AudioSource audioSource;
@@ -35,7 +35,7 @@ public class DisplayController : MonoBehaviour
     
     private void Start()
     {
-        audioSource.PlayOneShot(bgmOrpheusInTheUnderWorld);
+        audioSource.PlayOneShot(BGM);
     }
 
     public void AddPoints(int points)
@@ -96,7 +96,7 @@ public class DisplayController : MonoBehaviour
         retryButton.SetActive(false);
         
         //BGMを再度再生します
-        audioSource.PlayOneShot(bgmOrpheusInTheUnderWorld);
+        audioSource.PlayOneShot(BGM);
 
     }
 }

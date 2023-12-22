@@ -25,10 +25,10 @@ public class WeaponController : MonoBehaviour
     /// <Summary>
     /// どの音を再生するかを設定します
     /// </Summary>
-    // [SerializeField] private AudioClip seSwordCollision;
+    [SerializeField] private AudioClip seSwordCollision;
 
     //音を再生するためのコンポーネントの情報を格納する変数です
-    // [SerializeField] private AudioSource audioSource;
+    [SerializeField] private AudioSource audioSource;
 
     private bool isAttacking = false;
 
@@ -61,7 +61,7 @@ public class WeaponController : MonoBehaviour
         {
             Debug.Log("TryGetComponent");
             //武器同士が衝突したときの音を鳴らします
-            // audioSource.PlayOneShot(seSwordCollision);
+            audioSource.PlayOneShot(seSwordCollision);
             
             //パーティクルを発します
             weaponParticleSystem.Play();
