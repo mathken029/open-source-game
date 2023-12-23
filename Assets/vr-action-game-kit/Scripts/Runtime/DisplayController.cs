@@ -21,9 +21,6 @@ public class DisplayController : MonoBehaviour
     //残り時間です
     [SerializeField] private float timeRemaining;
 
-    //BGMです
-    [SerializeField] private AudioClip BGM;
-
     //音を再生するためのコンポーネントの情報を格納する変数です
     [SerializeField] private AudioSource audioSource;
     
@@ -35,7 +32,7 @@ public class DisplayController : MonoBehaviour
     
     private void Start()
     {
-        audioSource.PlayOneShot(BGM);
+        audioSource.Play();
     }
 
     public void AddPoints(int points)
@@ -96,7 +93,7 @@ public class DisplayController : MonoBehaviour
         retryButton.SetActive(false);
         
         //BGMを再度再生します
-        audioSource.PlayOneShot(BGM);
+        audioSource.Play();
 
     }
 }

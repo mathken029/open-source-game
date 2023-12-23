@@ -44,6 +44,7 @@
 - "Hit06" (https://otologic.jp/free/se/hit01.html) is licensed under CC BY 4.0 (https://otologic.jp/free/license.html)
 - "Cannon01" (https://otologic.jp/free/se/guns01.html) is licensed under CC BY 4.0 (https://otologic.jp/free/license.html)
 - "電撃 06" (https://otologic.jp/free/se/electric-shock01.html) is licensed under CC BY 4.0 (https://otologic.jp/free/license.html)
+- "オノマトペ 衝撃 07" (hhttps://otologic.jp/free/se/impact01.html) is licensed under CC BY 4.0 (https://otologic.jp/free/license.html)
 
 ### BGM
 

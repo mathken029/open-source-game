@@ -1636,7 +1636,6 @@ MonoBehaviour:
   explanationText: {fileID: 1372320214}
   retryButton: {fileID: 1664124128}
   timeRemaining: 49.5
-  BGM: {fileID: 8300000, guid: fec0fb0a88ba5a646bb719322c2e6dfd, type: 3}
   audioSource: {fileID: 1320895417}
 --- !u!4 &792446528
 Transform:
@@ -4463,11 +4462,11 @@ AudioSource:
   m_Enabled: 1
   serializedVersion: 4
   OutputAudioMixerGroup: {fileID: 0}
-  m_audioClip: {fileID: 0}
+  m_audioClip: {fileID: 8300000, guid: fec0fb0a88ba5a646bb719322c2e6dfd, type: 3}
   m_PlayOnAwake: 1
   m_Volume: 0.1
   m_Pitch: 1
-  Loop: 1
+  Loop: 0
   Mute: 0
   Spatialize: 0
   SpatializePostEffects: 0
@@ -8500,6 +8499,8 @@ MonoBehaviour:
   m_EditorClassIdentifier: 
   enemyAddForcePowerY: 9000
   enemyAddForcePowerZ: 30000
+  seEnemyStrike: {fileID: 8300000, guid: 47086eb8a48bc5945b01b22408b1a9d1, type: 3}
+  audioSource: {fileID: 1320895417}
   enemyRigidbody: {fileID: 1930014847}
 --- !u!1 &1977503708 stripped
 GameObject:
