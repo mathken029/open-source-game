@@ -66,6 +66,9 @@ public class DisplayController : MonoBehaviour
 
             if (pointsSendFlag)
             {
+                //早く敵を倒したほど高得点とするため、ポイントから経過時間を引きます
+                displayPoints -= timeElapsed;
+                
                 //unityroomにスコアを送付します
                 UnityroomApiClient.Instance.SendScore(1, displayPoints, ScoreboardWriteMode.HighScoreDesc);
                 pointsSendFlag = false;
