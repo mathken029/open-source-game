@@ -1,6 +1,7 @@
 {
   "dependencies": {
     "com.annulusgames.lucid-random": "https://github.com/AnnulusGames/LucidRandom.git?path=/Assets/LucidRandom",
+    "com.unity.ai.navigation": "1.1.5",
     "com.unity.collab-proxy": "2.0.4",
     "com.unity.ide.rider": "3.0.21",
     "com.unity.ide.visualstudio": "2.0.18",

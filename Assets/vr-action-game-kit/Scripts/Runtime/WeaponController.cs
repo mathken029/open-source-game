@@ -58,13 +58,10 @@ public class WeaponController : MonoBehaviour
     /// </Summary>
     private void OnTriggerEnter(Collider other)
     {
-        Debug.Log("OnTriggerEnter");
-        
         //当たったのが武器かどうかを判定します
         if (other.gameObject.TryGetComponent<WeaponController>(
                 out WeaponController _WeaponControllerIdentification))
         {
-            Debug.Log("TryGetComponent");
             //武器同士が衝突したときの音を鳴らします
             audioSource.PlayOneShot(seSwordCollision);
             
