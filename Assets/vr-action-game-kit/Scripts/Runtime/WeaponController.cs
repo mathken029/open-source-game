@@ -25,6 +25,8 @@ public class WeaponController : MonoBehaviour
     [SerializeField] private ParticleSystem weaponParticleSystem;
     [SerializeField] private TrailRenderer weaponTrailRenderer;
 
+    [SerializeField] private DisplayController displayController;
+
     /// <Summary>
     /// どの音を再生するかを設定します
     /// </Summary>
@@ -83,6 +85,7 @@ public class WeaponController : MonoBehaviour
             if (isAttacking == true)
             {
                 _enemyControllerIdentification.Beat();
+                displayController.AddPoints(100);
             }
         }
         

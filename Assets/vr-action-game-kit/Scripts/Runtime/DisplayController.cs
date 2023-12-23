@@ -18,11 +18,14 @@ public class DisplayController : MonoBehaviour
     //リトライボタンです
     [SerializeField] private GameObject retryButton;
 
-    //残り時間です
-    [SerializeField] private float timeRemaining;
-
     //音を再生するためのコンポーネントの情報を格納する変数です
     [SerializeField] private AudioSource audioSource;
+
+    [Header("敵のオブジェクトです")] [SerializeField]
+    private EnemyController enemyController;
+    
+    //経過時間です
+    private float timeElapsed = 0;
     
     //表示するポイントです
     private float displayPoints = 0;
@@ -48,16 +51,13 @@ public class DisplayController : MonoBehaviour
 
     private void Update()
     {
-        if (timeRemaining > 0)
+        if (enemyController.CheckBeated() == false)
         {
-            //経過した時間を引いていきます
-            timeRemaining -= Time.deltaTime;
+            //経過した時間を足していきます
+            timeElapsed += Time.deltaTime;
         }
         else
         {
-            //表示が-0.01になってしまうため戻す
-            timeRemaining = 0.00f;
-            
             //リトライボタンを表示します
             retryButton.SetActive(true);
             
@@ -77,14 +77,20 @@ public class DisplayController : MonoBehaviour
             }
         }
         
-        timeAndPointText.text = timeRemaining.ToString("0.00")+ "\n" +
+        timeAndPointText.text = timeElapsed.ToString("0.00")+ "\n" +
                                 displayPoints + "点";
     }
 
     public void Retry()
     {
+        //残り時間を初期化します
+        timeElapsed = 0.00f;
+        
         //再度ゲーム終了した際にスコアが送付されるようにします
         pointsSendFlag = true;
+        
+        //敵を初期化します
+        enemyController.Reset();
         
         //シーンを再度読み込みます
         SceneManager.LoadScene(SceneManager.GetActiveScene().name);
