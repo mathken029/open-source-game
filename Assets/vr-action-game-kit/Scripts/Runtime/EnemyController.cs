@@ -37,6 +37,9 @@ public class EnemyController : MonoBehaviour
     {
         beatFlag = true;
         
+        //NavmeshAgentが有効だと上に飛ばないので無効化します
+        enemyNavMeshAgent.enabled = false;
+        
         //敵のヒットストップ処理を行います
         
         //敵がやられた際の音を鳴らします
