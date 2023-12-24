@@ -82,8 +82,6 @@ public class EnemyController : MonoBehaviour
 
     private void FixedUpdate()
     {
-        Debug.Log(enemyNavMeshAgent.stoppingDistance);
-        
         //プレイヤーの位置まで移動します
         if (Vector3.Distance(playerTransform.position, enemyNavMeshAgent.transform.position) >
             enemyNavMeshAgent.stoppingDistance)

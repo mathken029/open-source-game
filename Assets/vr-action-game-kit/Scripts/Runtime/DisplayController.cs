@@ -21,8 +21,8 @@ public class DisplayController : MonoBehaviour
     //音を再生するためのコンポーネントの情報を格納する変数です
     [SerializeField] private AudioSource audioSource;
 
-    [Header("敵のオブジェクトです")] [SerializeField]
-    private EnemyController enemyController;
+    [SerializeField] private PlayerController playerController;
+    [SerializeField] private EnemyController enemyController;
     
     //経過時間です
     private float timeElapsed = 0;
@@ -51,33 +51,33 @@ public class DisplayController : MonoBehaviour
 
     private void Update()
     {
-        if (enemyController.CheckBeated() == false)
-        {
-            //経過した時間を足していきます
-            timeElapsed += Time.deltaTime;
-        }
-        else
+        if (enemyController.CheckBeated() || playerController.CheckBeated())
         {
             //リトライボタンを表示します
             retryButton.SetActive(true);
             
-            //BGMを止めます
-            audioSource.Stop();
-
-            if (pointsSendFlag)
+            if (enemyController.CheckBeated() )
             {
-                //早く敵を倒したほど高得点とするため、ポイントから経過時間を引きます
-                displayPoints -= timeElapsed;
+                if (pointsSendFlag)
+                {
+                    //早く敵を倒したほど高得点とするため、ポイントから経過時間を引きます
+                    displayPoints -= timeElapsed;
                 
-                //unityroomにスコアを送付します
-                UnityroomApiClient.Instance.SendScore(1, displayPoints, ScoreboardWriteMode.HighScoreDesc);
-                pointsSendFlag = false;
-            }
+                    //unityroomにスコアを送付します
+                    UnityroomApiClient.Instance.SendScore(1, displayPoints, ScoreboardWriteMode.HighScoreDesc);
+                    pointsSendFlag = false;
+                }
 
-            if (Input.GetKeyDown(KeyCode.R))
-            {
-                Retry();
+                if (Input.GetKeyDown(KeyCode.R))
+                {
+                    Retry();
+                }
             }
+        }
+        else
+        {
+            //経過した時間を足していきます
+            timeElapsed += Time.deltaTime;
         }
         
         timeAndPointText.text = timeElapsed.ToString("0.00")+ "\n" +
@@ -92,7 +92,8 @@ public class DisplayController : MonoBehaviour
         //再度ゲーム終了した際にスコアが送付されるようにします
         pointsSendFlag = true;
         
-        //敵を初期化します
+        //プレイヤーと敵を初期化します
+        playerController.Reset();
         enemyController.Reset();
         
         //シーンを再度読み込みます
