@@ -3,6 +3,9 @@ using System.Collections;
 using System.Collections.Generic;
 using UnityEngine;
 using UnityEngine.AI;
+using Random = UnityEngine.Random;
+using AnnulusGames.LucidTools.RandomKit;
+
 
 public class EnemyController : MonoBehaviour
 {
@@ -19,7 +22,31 @@ public class EnemyController : MonoBehaviour
     [Header("敵が戦闘モードに入る距離")] [SerializeField] private float battleDistance;
 
     private bool beatFlag = false;
+
+    private const string MeleeAttackPattern = "MeleeAttackPattern";
+    private const string GuardWhileMovingPattern = "GuardWhileMovingPattern";
+    private const string MoveFrontPattern = "MoveFrontPattern";
+    private const string MoveBackPattern = "MoveBackPattern";
     
+    private const int AttackFromLeftPattern = 1;
+    private const int AttackFromRightPattern = 2;
+    private const int AttackFromFrontPattern = 3;
+
+    /// <Summary>
+    /// 敵の行動をランダムにする変数です
+    /// </Summary>
+    [SerializeField] private WeightedList<string> meleeActionWeightedList = new WeightedList<string>(MeleeAttackPattern, GuardWhileMovingPattern);
+
+    /// <Summary>
+    /// 敵の攻撃をランダムにする変数です
+    /// </Summary>
+    [SerializeField] private WeightedList<int> meleeAttackWeightedList = new WeightedList<int>(AttackFromLeftPattern, AttackFromFrontPattern, AttackFromRightPattern);
+
+    /// <Summary>
+    /// 敵の移動をランダムにする変数です
+    /// </Summary>
+    [SerializeField] private WeightedList<string> moveWeightedList = new WeightedList<string>(MoveFrontPattern, MoveBackPattern);
+
     //敵がリセットされた際の処理です
     public void Reset()
     {

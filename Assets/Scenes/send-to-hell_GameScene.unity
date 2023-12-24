@@ -8558,7 +8558,27 @@ MonoBehaviour:
   enemyAnimator: {fileID: 1930014844}
   audioSource: {fileID: 1320895417}
   enemyRigidbody: {fileID: 1930014847}
-  battleDistance: 2
+  battleDistance: 3
+  meleeActionWeightedList:
+    list:
+    - value: MeleeAttackPattern
+      weight: 0.65
+    - value: GuardWhileMovingPattern
+      weight: 0.35
+  meleeAttackWeightedList:
+    list:
+    - value: 1
+      weight: 0.3
+    - value: 3
+      weight: 0.35
+    - value: 2
+      weight: 0.35
+  moveWeightedList:
+    list:
+    - value: MoveFrontPattern
+      weight: 0.6
+    - value: MoveBackPattern
+      weight: 0.4
 --- !u!195 &1930014854
 NavMeshAgent:
   m_ObjectHideFlags: 0
