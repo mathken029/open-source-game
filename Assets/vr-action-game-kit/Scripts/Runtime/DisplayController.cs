@@ -15,6 +15,12 @@ public class DisplayController : MonoBehaviour
     //操作説明用のテキストです
     [SerializeField] private TextMeshProUGUI explanationText;
     
+    //勝敗表示用のテキストの親オブジェクトです
+    [SerializeField] private GameObject resultTextParent;
+    
+    //勝敗表示用のテキストです
+    [SerializeField] private TextMeshProUGUI resultText;
+    
     //リトライボタンです
     [SerializeField] private GameObject retryButton;
 
@@ -53,11 +59,14 @@ public class DisplayController : MonoBehaviour
     {
         if (enemyController.CheckBeated() || playerController.CheckBeated())
         {
-            //リトライボタンを表示します
+            //結果・リトライボタンを表示します
+            resultTextParent.SetActive(true);
             retryButton.SetActive(true);
             
             if (enemyController.CheckBeated() )
             {
+                resultText.text = "Win";
+
                 if (pointsSendFlag)
                 {
                     //早く敵を倒したほど高得点とするため、ポイントから経過時間を引きます
@@ -72,6 +81,10 @@ public class DisplayController : MonoBehaviour
                 {
                     Retry();
                 }
+            }
+            else if (playerController.CheckBeated())
+            {
+                resultText.text = "Lose";
             }
         }
         else
