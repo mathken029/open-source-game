@@ -94,6 +94,9 @@ public class EnemyController : MonoBehaviour
         else
         {
             enemyAnimator.SetFloat("Speed", 0);
+            
+            //攻撃をします
+            enemyAnimator.SetInteger(MeleeAttackPattern, AttackFromFrontPattern);
         }
 
     }
