@@ -50,7 +50,6 @@ public class EnemyController : MonoBehaviour
     private static readonly int AnimationLocomotionHash = Animator.StringToHash("Locomotion");
     private static readonly int AnimationWalkBackHash = Animator.StringToHash("WalkBack");
 
-
     //敵がリセットされた際の処理です
     public void Reset()
     {
@@ -93,8 +92,22 @@ public class EnemyController : MonoBehaviour
         {
             enemyAnimator.SetFloat("Speed", 0);
             
-            //攻撃をします
-            enemyAnimator.SetInteger(MeleeAttackPattern, AttackFromFrontPattern);
+            //行動パターンを決定します
+            var meleeActionPattern = meleeActionWeightedList.RandomElement();
+            switch (meleeActionPattern)
+            {
+                case MeleeAttackPattern:
+                    //攻撃パターンを決定します
+                    var meleeAttackPattern = meleeAttackWeightedList.RandomElement();
+                    enemyAnimator.SetInteger(MeleeAttackPattern, meleeAttackPattern);
+           
+                    break;
+
+                case GuardWhileMovingPattern:
+                    //ガードのアクションを再生します
+                    
+                    break;
+            }
         }
 
     }
