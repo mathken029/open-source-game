@@ -19,8 +19,6 @@ public class EnemyController : MonoBehaviour
     [SerializeField] private AudioSource audioSource;
     [SerializeField] private Rigidbody enemyRigidbody;
     
-    [Header("敵が戦闘モードに入る距離")] [SerializeField] private float battleDistance;
-
     private bool beatFlag = false;
 
     private const string MeleeAttackPattern = "MeleeAttackPattern";
@@ -82,7 +80,7 @@ public class EnemyController : MonoBehaviour
         
         //プレイヤーの位置まで移動します
         if (Vector3.Distance(playerTransform.position, enemyNavMeshAgent.transform.position) >
-            battleDistance)
+            enemyNavMeshAgent.stoppingDistance)
         {
             enemyNavMeshAgent.SetDestination(playerTransform.position);
         }
