@@ -19,17 +19,6 @@ public class EnemyController : MonoBehaviour
     [SerializeField] private AudioSource audioSource;
     [SerializeField] private Rigidbody enemyRigidbody;
     
-    private bool beatFlag = false;
-
-    private const string MeleeAttackPattern = "MeleeAttackPattern";
-    private const string GuardWhileMovingPattern = "GuardWhileMovingPattern";
-    private const string MoveFrontPattern = "MoveFrontPattern";
-    private const string MoveBackPattern = "MoveBackPattern";
-    
-    private const int AttackFromLeftPattern = 1;
-    private const int AttackFromRightPattern = 2;
-    private const int AttackFromFrontPattern = 3;
-
     /// <Summary>
     /// 敵の行動をランダムにする変数です
     /// </Summary>
@@ -44,6 +33,23 @@ public class EnemyController : MonoBehaviour
     /// 敵の移動をランダムにする変数です
     /// </Summary>
     [SerializeField] private WeightedList<string> moveWeightedList = new WeightedList<string>(MoveFrontPattern, MoveBackPattern);
+
+    private bool beatFlag = false;
+
+    private const string MeleeAttackPattern = "MeleeAttackPattern";
+    private const string GuardWhileMovingPattern = "GuardWhileMovingPattern";
+    private const string MoveFrontPattern = "MoveFrontPattern";
+    private const string MoveBackPattern = "MoveBackPattern";
+    
+    private const int AttackFromLeftPattern = 1;
+    private const int AttackFromRightPattern = 2;
+    private const int AttackFromFrontPattern = 3;
+
+    //文字列をハッシュという数字に予め変換しておくことで、処理の度に文字列化を行ないでよいようにして負荷を軽減します
+    //また、文字列の打ち間違いをしないようにします
+    private static readonly int AnimationLocomotionHash = Animator.StringToHash("Locomotion");
+    private static readonly int AnimationWalkBackHash = Animator.StringToHash("WalkBack");
+
 
     //敵がリセットされた際の処理です
     public void Reset()
@@ -74,15 +80,20 @@ public class EnemyController : MonoBehaviour
         enemyRigidbody.AddForce(0, enemyAddForcePowerY, enemyAddForcePowerZ);
     }
 
-    private void Update()
+    private void FixedUpdate()
     {
-        Debug.Log(Vector3.Distance(playerTransform.position, enemyNavMeshAgent.transform.position));
+        Debug.Log(enemyNavMeshAgent.stoppingDistance);
         
         //プレイヤーの位置まで移動します
         if (Vector3.Distance(playerTransform.position, enemyNavMeshAgent.transform.position) >
             enemyNavMeshAgent.stoppingDistance)
         {
             enemyNavMeshAgent.SetDestination(playerTransform.position);
+            enemyAnimator.SetFloat("Speed", 1.0f);
+        }
+        else
+        {
+            enemyAnimator.SetFloat("Speed", 0);
         }
 
     }
