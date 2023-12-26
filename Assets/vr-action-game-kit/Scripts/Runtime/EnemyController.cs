@@ -41,9 +41,13 @@ public class EnemyController : MonoBehaviour
     private const string MoveFrontPattern = "MoveFrontPattern";
     private const string MoveBackPattern = "MoveBackPattern";
     
+    private const string GuardTrigger = "GuardTrigger";
+
     private const int AttackFromLeftPattern = 1;
     private const int AttackFromRightPattern = 2;
     private const int AttackFromFrontPattern = 3;
+    
+    
 
     //文字列をハッシュという数字に予め変換しておくことで、処理の度に文字列化を行ないでよいようにして負荷を軽減します
     //また、文字列の打ち間違いをしないようにします
@@ -105,7 +109,7 @@ public class EnemyController : MonoBehaviour
 
                 case GuardWhileMovingPattern:
                     //ガードのアクションを再生します
-                    
+                    enemyAnimator.SetTrigger(GuardTrigger);
                     break;
             }
         }
