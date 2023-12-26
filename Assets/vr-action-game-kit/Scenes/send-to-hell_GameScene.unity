@@ -1777,6 +1777,7 @@ MonoBehaviour:
   audioSource: {fileID: 1320895417}
   playerController: {fileID: 1636386226}
   enemyController: {fileID: 1930014853}
+  startPoints: 100
 --- !u!4 &792446528
 Transform:
   m_ObjectHideFlags: 0

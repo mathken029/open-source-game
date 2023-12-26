@@ -23,12 +23,12 @@ public class DisplayController : MonoBehaviour
     
     //リトライボタンです
     [SerializeField] private GameObject retryButton;
-
-    //音を再生するためのコンポーネントの情報を格納する変数です
+    
     [SerializeField] private AudioSource audioSource;
-
     [SerializeField] private PlayerController playerController;
     [SerializeField] private EnemyController enemyController;
+
+    [SerializeField] private float startPoints;
     
     //経過時間です
     private float timeElapsed = 0;
@@ -69,9 +69,6 @@ public class DisplayController : MonoBehaviour
 
                 if (pointsSendFlag)
                 {
-                    //早く敵を倒したほど高得点とするため、ポイントから経過時間を引きます
-                    displayPoints -= timeElapsed;
-                
                     //unityroomにスコアを送付します
                     UnityroomApiClient.Instance.SendScore(1, displayPoints, ScoreboardWriteMode.HighScoreDesc);
                     pointsSendFlag = false;
@@ -91,6 +88,9 @@ public class DisplayController : MonoBehaviour
         {
             //経過した時間を足していきます
             timeElapsed += Time.deltaTime;
+            
+            //早く敵を倒したほど高得点とするため、ポイントから経過時間を引きます
+            displayPoints = startPoints - timeElapsed;
         }
         
         timeAndPointText.text = timeElapsed.ToString("0.00")+ "\n" +
