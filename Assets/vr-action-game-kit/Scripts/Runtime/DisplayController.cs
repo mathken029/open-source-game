@@ -15,12 +15,6 @@ public class DisplayController : MonoBehaviour
     //操作説明用のテキストです
     [SerializeField] private TextMeshProUGUI explanationText;
     
-    //勝敗表示用のテキストの親オブジェクトです
-    [SerializeField] private GameObject resultTextParent;
-    
-    //勝敗表示用のテキストです
-    [SerializeField] private TextMeshProUGUI resultText;
-    
     //リトライボタンです
     [SerializeField] private GameObject retryButton;
     
@@ -28,7 +22,8 @@ public class DisplayController : MonoBehaviour
     [SerializeField] private PlayerController playerController;
     [SerializeField] private EnemyController enemyController;
 
-    [SerializeField] private float startPoints;
+    [Header("初期ポイントです")][SerializeField] private float startPoints;
+    [Header("敵を倒したときに加算されるポイントです")][SerializeField] private float enemyBeatPoints;
     
     //経過時間です
     private float timeElapsed = 0;
@@ -46,42 +41,35 @@ public class DisplayController : MonoBehaviour
 
     public void AddPoints(int points)
     {
-        displayPoints += points;
+        startPoints += points;
     }
     
     public void SubtractionPoints(int points)
     {
-        displayPoints -= points;
+        startPoints -= points;
     }
 
 
     private void Update()
     {
-        if (enemyController.CheckBeated() || playerController.CheckBeated())
+        if (enemyController.CheckBeated())
         {
             //結果・リトライボタンを表示します
-            resultTextParent.SetActive(true);
             retryButton.SetActive(true);
             
-            if (enemyController.CheckBeated() )
+            if (pointsSendFlag)
             {
-                resultText.text = "Win";
-
-                if (pointsSendFlag)
-                {
-                    //unityroomにスコアを送付します
-                    UnityroomApiClient.Instance.SendScore(1, displayPoints, ScoreboardWriteMode.HighScoreDesc);
-                    pointsSendFlag = false;
-                }
-
-                if (Input.GetKeyDown(KeyCode.R))
-                {
-                    Retry();
-                }
+                //敵を倒したのでポイントを加算します
+                displayPoints += enemyBeatPoints;
+                
+                //unityroomにスコアを送付します
+                UnityroomApiClient.Instance.SendScore(1, displayPoints, ScoreboardWriteMode.HighScoreDesc);
+                pointsSendFlag = false;
             }
-            else if (playerController.CheckBeated())
+
+            if (Input.GetKeyDown(KeyCode.R))
             {
-                resultText.text = "Lose";
+                Retry();
             }
         }
         else
@@ -94,7 +82,7 @@ public class DisplayController : MonoBehaviour
         }
         
         timeAndPointText.text = timeElapsed.ToString("0.00")+ "\n" +
-                                displayPoints + "点";
+                                displayPoints.ToString("0.00") + "点";
     }
 
     public void Retry()

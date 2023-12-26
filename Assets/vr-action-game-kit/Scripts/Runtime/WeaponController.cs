@@ -82,7 +82,6 @@ public class WeaponController : MonoBehaviour
             if (isAttacking == true)
             {
                 _enemyControllerIdentification.Beat();
-                displayController.AddPoints(100);
             }
         }
         

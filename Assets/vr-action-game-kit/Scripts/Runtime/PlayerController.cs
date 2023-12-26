@@ -5,8 +5,9 @@ using UnityEngine;
 
 public class PlayerController : MonoBehaviour
 {
-    [Header("プレイヤーがやられたときの音")] [SerializeField] private AudioClip sePlayerBeated;
-    [SerializeField] private Collider playerCollider;
+    [Header("プレイヤーが攻撃を受けたときの音")] [SerializeField] private AudioClip sePlayerBeated;
+    [Header("プレイヤーが攻撃を受けたときに減るポイント")] [SerializeField] private int damagePoints;
+    [SerializeField] private DisplayController displayController;
     [SerializeField] private AudioSource audioSource;
 
     private bool beatFlag = false;
@@ -32,13 +33,11 @@ public class PlayerController : MonoBehaviour
         if (other.gameObject.TryGetComponent<EnemyWeaponController>(
                 out EnemyWeaponController _enemyWeaponControllerIdentification))
         {
-            if (beatFlag == false)
-            {
-                //プレイヤーがやられたときのサウンドを鳴らします
-                audioSource.PlayOneShot(sePlayerBeated);
-            }
-            //プレイヤーが倒されたフラグを立てます
-            beatFlag = true;
+            //プレイヤーが攻撃を受けたときのサウンドを鳴らします
+            audioSource.PlayOneShot(sePlayerBeated);
+            
+            //ポイントを減らします
+            displayController.SubtractionPoints(damagePoints);
         }
     }
 }
