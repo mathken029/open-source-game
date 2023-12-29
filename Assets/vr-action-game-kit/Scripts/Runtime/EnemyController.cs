@@ -19,6 +19,8 @@ public class EnemyController : MonoBehaviour
     [SerializeField] private AudioSource audioSource;
     [SerializeField] private Rigidbody enemyRigidbody;
     
+    [SerializeField] private WeaponController weaponController;
+
     private const int AttackFromLeftPattern = 1;
     private const int AttackFromRightPattern = 2;
     private const int GuardPattern = 3;
@@ -66,6 +68,22 @@ public class EnemyController : MonoBehaviour
         
         //敵を吹っ飛ばします
         enemyRigidbody.AddForce(0, enemyAddForcePowerY, enemyAddForcePowerZ);
+    }
+
+    /// <summary>
+    /// アニメーションから武器の攻撃開始メソッドを呼び出すために設定します
+    /// </summary>
+    public void AttackStart()
+    {
+        weaponController.AttackStart();
+    }
+
+    /// <summary>
+    /// アニメーションから武器の攻撃終了メソッドを呼び出すために設定します
+    /// </summary>
+    public void AttackEnd()
+    {
+        weaponController.AttackEnd();
     }
 
     private void FixedUpdate()

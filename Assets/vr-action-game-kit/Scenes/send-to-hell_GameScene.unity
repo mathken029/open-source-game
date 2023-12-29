@@ -2104,6 +2104,18 @@ PrefabInstance:
       insertIndex: -1
       addedObject: {fileID: 1644726142}
   m_SourcePrefab: {fileID: 100100000, guid: cb248b79134ae5d4eb90e3f535834f60, type: 3}
+--- !u!114 &1064122316 stripped
+MonoBehaviour:
+  m_CorrespondingSourceObject: {fileID: 9074911729839732234, guid: cb248b79134ae5d4eb90e3f535834f60,
+    type: 3}
+  m_PrefabInstance: {fileID: 1064122315}
+  m_PrefabAsset: {fileID: 0}
+  m_GameObject: {fileID: 1345587139}
+  m_Enabled: 1
+  m_EditorHideFlags: 0
+  m_Script: {fileID: 11500000, guid: 157dc7dde610d9e46acf6750c0066104, type: 3}
+  m_Name: 
+  m_EditorClassIdentifier: 
 --- !u!1 &1253191582 stripped
 GameObject:
   m_CorrespondingSourceObject: {fileID: 5323818951622561360, guid: 00ae2bf8c8a624ed38161cab9eeda7f7,
@@ -5317,6 +5329,7 @@ MonoBehaviour:
   m_Script: {fileID: 11500000, guid: 6a7ecd87a60528c4e81c0c3174449e85, type: 3}
   m_Name: 
   m_EditorClassIdentifier: 
+  weaponController: {fileID: 1064122316}
 --- !u!1 &1645530520
 GameObject:
   m_ObjectHideFlags: 0
@@ -8643,6 +8656,7 @@ MonoBehaviour:
   enemyAnimator: {fileID: 1930014844}
   audioSource: {fileID: 1320895417}
   enemyRigidbody: {fileID: 1930014847}
+  weaponController: {fileID: 1064122316}
   meleeAttackWeightedList:
     list:
     - value: 1

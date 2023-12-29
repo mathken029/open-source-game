@@ -31,13 +31,16 @@ public class PlayerController : MonoBehaviour
     {
         //当たったのが武器かどうかを判定します
         if (other.gameObject.TryGetComponent<EnemyWeaponController>(
-                out EnemyWeaponController _enemyWeaponControllerIdentification))
+                out EnemyWeaponController enemyWeaponControllerIdentification))
         {
-            //プレイヤーが攻撃を受けたときのサウンドを鳴らします
-            audioSource.PlayOneShot(sePlayerBeated);
+            if (enemyWeaponControllerIdentification.IsAttacking())
+            {
+                //プレイヤーが攻撃を受けたときのサウンドを鳴らします
+                audioSource.PlayOneShot(sePlayerBeated);
             
-            //ポイントを減らします
-            displayController.SubtractionPoints(damagePoints);
+                //ポイントを減らします
+                displayController.SubtractionPoints(damagePoints);
+            }
         }
     }
 }

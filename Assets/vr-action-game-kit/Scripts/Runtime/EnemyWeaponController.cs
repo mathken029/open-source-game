@@ -4,15 +4,9 @@ using UnityEngine;
 
 public class EnemyWeaponController : MonoBehaviour
 {
-    // Start is called before the first frame update
-    void Start()
+    [SerializeField] private WeaponController weaponController;
+    public bool IsAttacking()
     {
-        
-    }
-
-    // Update is called once per frame
-    void Update()
-    {
-        
+        return weaponController.IsAttacking();
     }
 }
