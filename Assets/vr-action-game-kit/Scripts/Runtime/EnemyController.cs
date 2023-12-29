@@ -19,40 +19,25 @@ public class EnemyController : MonoBehaviour
     [SerializeField] private AudioSource audioSource;
     [SerializeField] private Rigidbody enemyRigidbody;
     
-    /// <Summary>
-    /// 敵の行動をランダムにする変数です
-    /// </Summary>
-    [SerializeField] private WeightedList<string> meleeActionWeightedList = new WeightedList<string>(MeleeAttackPattern, GuardWhileMovingPattern);
+    private const int AttackFromLeftPattern = 1;
+    private const int AttackFromRightPattern = 2;
+    private const int GuardPattern = 3;
+    private const string MeleeAttackPattern = "MeleeAttackPattern";
 
+    
     /// <Summary>
     /// 敵の攻撃をランダムにする変数です
     /// </Summary>
-    [SerializeField] private WeightedList<int> meleeAttackWeightedList = new WeightedList<int>(AttackFromLeftPattern, AttackFromFrontPattern, AttackFromRightPattern);
-
-    /// <Summary>
-    /// 敵の移動をランダムにする変数です
-    /// </Summary>
-    [SerializeField] private WeightedList<string> moveWeightedList = new WeightedList<string>(MoveFrontPattern, MoveBackPattern);
+    [SerializeField] private WeightedList<int> meleeAttackWeightedList = new WeightedList<int>(AttackFromLeftPattern, AttackFromRightPattern, GuardPattern);
 
     private bool beatFlag = false;
-
-    private const string MeleeAttackPattern = "MeleeAttackPattern";
-    private const string GuardWhileMovingPattern = "GuardWhileMovingPattern";
-    private const string MoveFrontPattern = "MoveFrontPattern";
-    private const string MoveBackPattern = "MoveBackPattern";
-    
-    private const string GuardTrigger = "GuardTrigger";
-
-    private const int AttackFromLeftPattern = 1;
-    private const int AttackFromRightPattern = 2;
-    private const int AttackFromFrontPattern = 3;
-    
-    
 
     //文字列をハッシュという数字に予め変換しておくことで、処理の度に文字列化を行ないでよいようにして負荷を軽減します
     //また、文字列の打ち間違いをしないようにします
     private static readonly int AnimationLocomotionHash = Animator.StringToHash("Locomotion");
     private static readonly int AnimationWalkBackHash = Animator.StringToHash("WalkBack");
+
+    private string meleeActionPattern;
 
     //敵がリセットされた際の処理です
     public void Reset()
@@ -97,21 +82,8 @@ public class EnemyController : MonoBehaviour
             enemyAnimator.SetFloat("Speed", 0);
             
             //行動パターンを決定します
-            var meleeActionPattern = meleeActionWeightedList.RandomElement();
-            switch (meleeActionPattern)
-            {
-                case MeleeAttackPattern:
-                    //攻撃パターンを決定します
-                    var meleeAttackPattern = meleeAttackWeightedList.RandomElement();
-                    enemyAnimator.SetInteger(MeleeAttackPattern, meleeAttackPattern);
-           
-                    break;
-
-                case GuardWhileMovingPattern:
-                    //ガードのアクションを再生します
-                    enemyAnimator.SetTrigger(GuardTrigger);
-                    break;
-            }
+            var meleeAttackPattern = meleeAttackWeightedList.RandomElement();
+            enemyAnimator.SetInteger(MeleeAttackPattern, meleeAttackPattern);
         }
 
     }

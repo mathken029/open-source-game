@@ -1970,6 +1970,36 @@ PrefabInstance:
       propertyPath: m_Name
       value: enemy_neon-blade-sword_animation
       objectReference: {fileID: 0}
+    - target: {fileID: 4180836321504588037, guid: cb248b79134ae5d4eb90e3f535834f60,
+        type: 3}
+      propertyPath: m_Size.x
+      value: 0.63337237
+      objectReference: {fileID: 0}
+    - target: {fileID: 4180836321504588037, guid: cb248b79134ae5d4eb90e3f535834f60,
+        type: 3}
+      propertyPath: m_Size.y
+      value: 1.4721938
+      objectReference: {fileID: 0}
+    - target: {fileID: 4180836321504588037, guid: cb248b79134ae5d4eb90e3f535834f60,
+        type: 3}
+      propertyPath: m_Size.z
+      value: 14.75328
+      objectReference: {fileID: 0}
+    - target: {fileID: 4180836321504588037, guid: cb248b79134ae5d4eb90e3f535834f60,
+        type: 3}
+      propertyPath: m_Center.x
+      value: 0.015764985
+      objectReference: {fileID: 0}
+    - target: {fileID: 4180836321504588037, guid: cb248b79134ae5d4eb90e3f535834f60,
+        type: 3}
+      propertyPath: m_Center.y
+      value: 1.3139234
+      objectReference: {fileID: 0}
+    - target: {fileID: 4180836321504588037, guid: cb248b79134ae5d4eb90e3f535834f60,
+        type: 3}
+      propertyPath: m_Center.z
+      value: -2.5948076
+      objectReference: {fileID: 0}
     - target: {fileID: 4628495202178604402, guid: cb248b79134ae5d4eb90e3f535834f60,
         type: 3}
       propertyPath: m_IsKinematic
@@ -1983,17 +2013,17 @@ PrefabInstance:
     - target: {fileID: 7438089215195606971, guid: cb248b79134ae5d4eb90e3f535834f60,
         type: 3}
       propertyPath: m_LocalScale.x
-      value: 0.050000068
+      value: 0.07000007
       objectReference: {fileID: 0}
     - target: {fileID: 7438089215195606971, guid: cb248b79134ae5d4eb90e3f535834f60,
         type: 3}
       propertyPath: m_LocalScale.y
-      value: 0.049999993
+      value: 0.06999996
       objectReference: {fileID: 0}
     - target: {fileID: 7438089215195606971, guid: cb248b79134ae5d4eb90e3f535834f60,
         type: 3}
       propertyPath: m_LocalScale.z
-      value: 0.050000068
+      value: 0.07000007
       objectReference: {fileID: 0}
     - target: {fileID: 7438089215195606971, guid: cb248b79134ae5d4eb90e3f535834f60,
         type: 3}
@@ -2044,6 +2074,11 @@ PrefabInstance:
         type: 3}
       propertyPath: m_LocalEulerAnglesHint.z
       value: -184.445
+      objectReference: {fileID: 0}
+    - target: {fileID: 7438089215195606971, guid: cb248b79134ae5d4eb90e3f535834f60,
+        type: 3}
+      propertyPath: m_ConstrainProportionsScale
+      value: 1
       objectReference: {fileID: 0}
     - target: {fileID: 7581192934663535832, guid: cb248b79134ae5d4eb90e3f535834f60,
         type: 3}
@@ -8608,25 +8643,13 @@ MonoBehaviour:
   enemyAnimator: {fileID: 1930014844}
   audioSource: {fileID: 1320895417}
   enemyRigidbody: {fileID: 1930014847}
-  meleeActionWeightedList:
-    list:
-    - value: MeleeAttackPattern
-      weight: 0.65
-    - value: GuardWhileMovingPattern
-      weight: 0.35
   meleeAttackWeightedList:
     list:
     - value: 1
       weight: 0.3
-    - value: 3
-      weight: 0.35
     - value: 2
-      weight: 0.35
-  moveWeightedList:
-    list:
-    - value: MoveFrontPattern
-      weight: 0.6
-    - value: MoveBackPattern
+      weight: 0.3
+    - value: 3
       weight: 0.4
 --- !u!195 &1930014854
 NavMeshAgent:
@@ -8642,7 +8665,7 @@ NavMeshAgent:
   m_Acceleration: 8
   avoidancePriority: 50
   m_AngularSpeed: 120
-  m_StoppingDistance: 3
+  m_StoppingDistance: 3.5
   m_AutoTraverseOffMeshLink: 1
   m_AutoBraking: 1
   m_AutoRepath: 1
@@ -8685,6 +8708,31 @@ PrefabInstance:
         type: 3}
       propertyPath: m_Name
       value: neon-blade-sword_animation
+      objectReference: {fileID: 0}
+    - target: {fileID: 4180836321504588037, guid: cb248b79134ae5d4eb90e3f535834f60,
+        type: 3}
+      propertyPath: m_Size.y
+      value: 3.311649
+      objectReference: {fileID: 0}
+    - target: {fileID: 4180836321504588037, guid: cb248b79134ae5d4eb90e3f535834f60,
+        type: 3}
+      propertyPath: m_Size.z
+      value: 41.437153
+      objectReference: {fileID: 0}
+    - target: {fileID: 4180836321504588037, guid: cb248b79134ae5d4eb90e3f535834f60,
+        type: 3}
+      propertyPath: m_Center.x
+      value: 0.060634196
+      objectReference: {fileID: 0}
+    - target: {fileID: 4180836321504588037, guid: cb248b79134ae5d4eb90e3f535834f60,
+        type: 3}
+      propertyPath: m_Center.y
+      value: 2.2336338
+      objectReference: {fileID: 0}
+    - target: {fileID: 4180836321504588037, guid: cb248b79134ae5d4eb90e3f535834f60,
+        type: 3}
+      propertyPath: m_Center.z
+      value: 2.1690862
       objectReference: {fileID: 0}
     - target: {fileID: 7438089215195606971, guid: cb248b79134ae5d4eb90e3f535834f60,
         type: 3}
