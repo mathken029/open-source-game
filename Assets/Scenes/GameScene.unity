@@ -1562,7 +1562,7 @@ MonoBehaviour:
   timeAndPointText: {fileID: 870899216}
   explanationText: {fileID: 1372320214}
   retryButton: {fileID: 1664124128}
-  timeRemaining: 10
+  timeRemaining: 50
   bgmOrpheusInTheUnderWorld: {fileID: 8300000, guid: ef404398fb4ba81429e0aa53d234ad40,
     type: 3}
   audioSource: {fileID: 1320895417}
